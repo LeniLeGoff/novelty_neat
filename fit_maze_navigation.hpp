@@ -88,10 +88,8 @@ SFERES_FITNESS(FitMazeNavigation,sf::fit::Fitness){
             //#endif
 
 
-#ifdef NOVELTY
             if ((i>0)&&(i%(int)(Params::simu::nb_steps/Params::novelty::nb_pos)==0))
                 pos_bd.push_back(simu.robot().get_pos());
-#endif
 
             // loop forever if we are in the visualization mode
             if (this->mode() != sf::fit::mode::view)
@@ -99,10 +97,8 @@ SFERES_FITNESS(FitMazeNavigation,sf::fit::Fitness){
 
         }
 
-#ifdef NOVELTY
         for (unsigned int j=pos_bd.size();j<Params::novelty::nb_pos;j++)
             pos_bd.push_back(simu.robot().get_pos());
-#endif
 
 
         end_pos=simu.robot().get_pos();
@@ -281,9 +277,9 @@ SFERES_FITNESS(FitMazeNavigation,sf::fit::Fitness){
     float speed, lin_speed;
     unsigned int stand_still;
     fs::Posture old_pos,end_pos;
-#ifdef NOVELTY
+
     std::vector<fs::Posture> pos_bd; // behavior descriptor based on the position
-#endif
+
 
 //    static int success1_so_far;
 //    static int success2_so_far;

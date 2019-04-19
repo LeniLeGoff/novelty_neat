@@ -8,7 +8,13 @@ def build(bld):
   cxxflags = bld.get_env()['CXXFLAGS']
   print ("Entering directory `" + os.getcwd() + "/modules/'")
 
-   
+  bld.program(features = 'cxx',
+                source = 'maze.cpp',
+                includes = '../../ ../../modules /usr/include/eigen3 /usr/include/ /usr/include/SDL',
+                uselib = libs,
+                use = 'sferes2 nn2 fastsim',
+                target = 'maze')
+
   sferes.create_variants(bld,
                         source = 'maze.cpp',
                         includes = '../../ ../../modules /usr/include/eigen3 /usr/include/ /usr/include/SDL',
@@ -24,3 +30,5 @@ def build(bld):
                             'NOVELTY',
                             'VISU'
                             ])
+
+  

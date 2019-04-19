@@ -65,9 +65,7 @@ int main(int argc, char** argv){
     // STATS
     typedef boost::fusion::vector<
             sf::stat::ParetoFront<phen_t, Params>,
-        #ifdef NOVELTY
             sf::stat::BD<phen_t, Params>,
-        #endif
             sf::stat::Success<phen_t, Params>
             //      sf::stat::Traj<phen_t, Params>
             >  stat_t;
