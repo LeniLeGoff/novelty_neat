@@ -13,7 +13,7 @@ struct Params{
     };
     struct evo_float {
         static constexpr float mutation_rate = 0.1f;
-        static constexpr float cross_rate = 0.1f;
+        static constexpr float cross_rate = 0.0f;
         static constexpr sf::gen::evo_float::mutation_t mutation_type = sf::gen::evo_float::polynomial;
         static constexpr sf::gen::evo_float::cross_over_t cross_over_type = sf::gen::evo_float::no_cross_over;
         static constexpr float eta_m = 15.0f;
@@ -33,11 +33,11 @@ struct Params{
         static constexpr size_t min_nb_conns	= 8;
         static constexpr size_t max_nb_conns	= 250;
 
-        static constexpr float m_rate_add_conn	= 1.0f;
-        static constexpr float m_rate_del_conn	= 0.1f;
-        static constexpr float m_rate_change_conn = 1.0f;
-        static constexpr float m_rate_add_neuron  = 1.0f;
-        static constexpr float m_rate_del_neuron  = 1.0f;
+        static constexpr float m_rate_add_conn	= 0.1f;
+        static constexpr float m_rate_del_conn	= 0.01f;
+        static constexpr float m_rate_change_conn = 0.1f;
+        static constexpr float m_rate_add_neuron  = 0.1f;
+        static constexpr float m_rate_del_neuron  = 0.01f;
 
         static constexpr int io_param_evolving = true;
         static constexpr sf::gen::dnn::init_t init = sf::gen::dnn::ff;
@@ -59,15 +59,17 @@ struct Params{
         // size of a batch
         static constexpr size_t size = 40;
         static constexpr size_t nb_gen = 51;
-        static constexpr float initial_aleat = 2.0f;
-        static constexpr size_t dump_period = 5;
+        static constexpr float initial_aleat = 1.0f;
+        static constexpr size_t dump_period = 50;
     };
     struct novelty {
         static constexpr float rho_min_init = 1.0;
-        static constexpr size_t k = 8;
-        static constexpr size_t stalled_tresh = 2500;
-        static constexpr size_t adding_tresh = 4;
-        static constexpr float add_to_archive_prob = 0;
+        static constexpr size_t k = 15;
+//        static constexpr size_t stalled_tresh = 2500;
+//        static constexpr size_t adding_tresh = 4;
+        static constexpr unsigned int max_archive_size = 50000; //Max archive size
+
+//        static constexpr float add_to_archive_prob = 0;
         static constexpr int nb_pos = 2 ;
     };
     struct fitness{

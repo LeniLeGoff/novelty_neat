@@ -4,7 +4,7 @@
 #include <sferes/fit/fitness.hpp>
 #include <sferes/gen/evo_float.hpp>
 #include <sferes/phen/parameters.hpp>
-#include <sferes/modif/novelty.hpp>
+//#include <sferes/modif/novelty.hpp>
 #include <sferes/modif/dummy.hpp>
 #include <sferes/run.hpp>
 #include <sferes/ea/nsga2.hpp>
@@ -21,6 +21,7 @@
 
 #include "phen_static_nn.hpp"
 #include "gen_static_nn.hpp"
+#include "modifier_novelty.hpp"
 
 //namespace sferes {
 
@@ -58,7 +59,7 @@ int main(int argc, char** argv){
     typedef sf::eval::Parallel<Params> eval_t;
 
 #ifdef NOVELTY
-    typedef sf::modif::Novelty<phen_t,Params> modifier_t;
+    typedef sf::modif::BehaviorNov<Params> modifier_t;
 #else
     typedef sf::modif::Dummy<Params> modifier_t;
 #endif

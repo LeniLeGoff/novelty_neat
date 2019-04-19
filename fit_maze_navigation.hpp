@@ -156,10 +156,15 @@ SFERES_FITNESS(FitMazeNavigation,sf::fit::Fitness){
         //        traj=straj.str();
         //#endif
     }
-    template<typename Indiv>
-    float dist(Indiv& ind){
-        return 0;
-    }
+//    template<typename Indiv>
+//    float dist(Indiv& ind){
+//        delta=_pop[i]->fit().pos_bd[k].get_x()-_pop[j]->fit().pos_bd[k].get_x();
+//        delta*=delta;
+//        hd+=delta;
+//        delta=_pop[i]->fit().pos_bd[k].get_y()-_pop[j]->fit().pos_bd[k].get_y();
+//        delta*=delta;
+//        hd+=delta;
+//    }
 
     template<typename Simu>
     void init_simu(Simu& simu)
