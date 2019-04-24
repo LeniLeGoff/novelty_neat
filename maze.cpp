@@ -1,6 +1,11 @@
 #include <iostream>
 
+#ifndef VISU
 #include <sferes/eval/parallel.hpp>
+#else
+#include <sferes/eval/eval.hpp>
+#endif
+
 #include <sferes/fit/fitness.hpp>
 #include <sferes/gen/evo_float.hpp>
 #include <sferes/phen/parameters.hpp>
@@ -56,7 +61,11 @@ int main(int argc, char** argv){
     typedef sf::phen::StaticNN<gen_t, FitMazeNavigation<Params>, Params> phen_t;
 #endif
 
+#ifndef VISU
     typedef sf::eval::Parallel<Params> eval_t;
+#else
+    typedef sf::eval::Eval<Params> eval_t;
+#endif
 
 #ifdef NOVELTY
     typedef sf::modif::BehaviorNov<Params> modifier_t;

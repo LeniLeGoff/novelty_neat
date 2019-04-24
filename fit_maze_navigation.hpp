@@ -200,7 +200,7 @@ SFERES_FITNESS(FitMazeNavigation,sf::fit::Fitness){
         //#elif LOWERLEFT
         //      simu.robot().set_pos(fs::Posture(simu.map()->get_real_w()*0.1,simu.map()->get_real_w()*0.9, -M_PI/2.0));
         ////#else
-        simu.robot().set_pos(fs::Posture(simu.map()->get_real_w()*0.1,simu.map()->get_real_w()*0.1, M_PI/4.0));
+        simu.robot().set_pos(fs::Posture(simu.map()->get_real_w()*0.1, simu.map()->get_real_w() - simu.map()->get_real_w()*0.1, M_PI/4.0));
         //#endif
         simu.robot().move(0,0,simu.map());
 
