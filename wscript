@@ -24,8 +24,8 @@ def build(bld):
                         variants = [
                             'NOVELTY NEAT VISU',
                             'NOVELTY NEAT',
-                            'NEAT VISU',
-                            'NEAT',
+                            'NOVELTY RNN VISU',
+                            'NOVELTY RNN',
                             'NOVELTY VISU',
                             'NOVELTY',
                             'VISU'

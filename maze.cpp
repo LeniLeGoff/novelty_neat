@@ -26,6 +26,8 @@
 
 #include "phen_static_nn.hpp"
 #include "gen_static_nn.hpp"
+#include "phen_static_rnn.hpp"
+#include "gen_static_rnn.hpp"
 #include "modifier_novelty.hpp"
 
 //namespace sferes {
@@ -56,6 +58,9 @@ int main(int argc, char** argv){
 #ifdef NEAT
     typedef sf::gen::Dnn<neuron_t, connection_t, Params> gen_t;
     typedef sf::phen::Dnn<gen_t, FitMazeNavigation<Params>, Params> phen_t;
+#elif RNN
+    typedef sf::gen::StaticRNN<neuron_t, connection_t, Params> gen_t;
+    typedef sf::phen::StaticRNN<gen_t, FitMazeNavigation<Params>, Params> phen_t;
 #else
     typedef sf::gen::StaticNN<neuron_t, connection_t, Params> gen_t;
     typedef sf::phen::StaticNN<gen_t, FitMazeNavigation<Params>, Params> phen_t;

@@ -1,5 +1,5 @@
-#ifndef GEN_STATIC_NN_HPP
-#define GEN_STATIC_NN_HPP
+#ifndef GEN_STATIC_RNN_HPP
+#define GEN_STATIC_RNN_HPP
 
 
 #include <bitset>
@@ -14,24 +14,24 @@
 #include <sferes/dbg/dbg.hpp>
 #include <sferes/misc.hpp>
 
-#include "mlp.hpp"
+#include "elman.hpp"
 
 namespace sferes {
 namespace gen {
 
 template<typename N, typename C, typename Params>
-class StaticNN : public nn::Mlp<N,C> {
+class StaticRNN : public nn::Elman<N,C> {
 public:
-    typedef nn::Mlp<N, C> mlp_t;
+    typedef nn::Elman<N, C> elman_t;
     typedef N neuron_t;
     typedef C conn_t;
-    typedef typename mlp_t::graph_t graph_t;
-    typedef typename mlp_t::vertex_desc_t vertex_desc_t;
-    typedef typename mlp_t::weight_t weight_t;
+    typedef typename elman_t::graph_t graph_t;
+    typedef typename elman_t::vertex_desc_t vertex_desc_t;
+    typedef typename elman_t::weight_t weight_t;
 
 
-    StaticNN() :
-        nn::Mlp<N,C>(Params::dnn::nb_inputs-1,Params::static_nn::nb_hidden,Params::dnn::nb_outputs)
+    StaticRNN() :
+        nn::Elman<N,C>(Params::dnn::nb_inputs-1,Params::static_nn::nb_hidden,Params::dnn::nb_outputs)
     {}
 
     void random(){
@@ -45,7 +45,7 @@ public:
             this->_g[e].get_weight().mutate();
     }
 
-    void cross(const StaticNN& o, StaticNN& c1, StaticNN& c2){
+    void cross(const StaticRNN& o, StaticRNN& c1, StaticRNN& c2){
         c1 = *this;
         c2 = o;
     }
@@ -135,4 +135,4 @@ public:
 }
 }
 
-#endif //GEN_STATIC_NN_HPP
+#endif //GEN_STATIC_RNN_HPP
