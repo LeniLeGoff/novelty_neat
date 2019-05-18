@@ -1,3 +1,7 @@
+/*
+ * Created by L.K Le Goff
+ */
+
 #include <iostream>
 
 #ifndef VISU

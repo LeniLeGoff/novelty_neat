@@ -158,7 +158,7 @@ SFERES_FITNESS(FitMazeNavigation,sf::fit::Fitness){
     }
 //    template<typename Indiv>
 //    float dist(Indiv& ind){
-//        delta=_pop[i]->fit().pos_bd[k].get_x()-_pop[j]->fit().pos_bd[k].get_x();
+//        delta=pos_bd[k].get_x()-_pop[j]->fit().pos_bd[k].get_x();
 //        delta*=delta;
 //        hd+=delta;
 //        delta=_pop[i]->fit().pos_bd[k].get_y()-_pop[j]->fit().pos_bd[k].get_y();
