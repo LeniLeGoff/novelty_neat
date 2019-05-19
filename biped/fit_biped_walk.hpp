@@ -36,7 +36,7 @@ SFERES_FITNESS(FitBipedWalk,sf::fit::Fitness){
 
         for(int i = 0; i < biped::Params::simu::nb_steps && !stop_eval;){
 
-            std::cout << "eval ... step " << i << std::endl;
+//            std::cout << "eval ... step " << i << std::endl;
 
             get_inputs();
 
