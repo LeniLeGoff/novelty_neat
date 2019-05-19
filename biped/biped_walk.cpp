@@ -4,11 +4,11 @@
 
 #include <iostream>
 
-#ifndef VISU
-#include <sferes/eval/parallel.hpp>
-#else
+//#ifndef VISU
+//#include <sferes/eval/parallel.hpp>
+//#else
 #include <sferes/eval/eval.hpp>
-#endif
+//#endif
 
 #include <sferes/fit/fitness.hpp>
 #include <sferes/gen/evo_float.hpp>
@@ -53,11 +53,11 @@ int main(int argc, char** argv){
     typedef sf::phen::StaticNN<gen_t, FitBipedWalk<biped::Params>, biped::Params> phen_t;
 #endif
 
-#ifndef VISU
-    typedef sf::eval::Parallel<biped::Params> eval_t;
-#else
+//#ifndef VISU
+//    typedef sf::eval::Parallel<biped::Params> eval_t;
+//#else
     typedef sf::eval::Eval<biped::Params> eval_t;
-#endif
+//#endif
 
 #ifdef NOVELTY
     typedef sf::modif::Novelty<phen_t,biped::Params> modifier_t;
