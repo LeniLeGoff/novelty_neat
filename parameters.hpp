@@ -13,9 +13,9 @@ struct Params{
     };
     struct evo_float {
         static constexpr float mutation_rate = 0.1f;
-        static constexpr float cross_rate = 0.1f;
+        static constexpr float cross_rate = 0.0f;
         static constexpr sf::gen::evo_float::mutation_t mutation_type = sf::gen::evo_float::polynomial;
-        static constexpr sf::gen::evo_float::cross_over_t cross_over_type = sf::gen::evo_float::sbx;
+        static constexpr sf::gen::evo_float::cross_over_t cross_over_type = sf::gen::evo_float::no_cross_over;
         static constexpr float eta_m = 15.0f;
         static constexpr float eta_c = 15.0f;
     };
