@@ -2,16 +2,16 @@
 
 import os
 import sferes
-import dart,bullet
+import dart,# bullet
 
 def options(opt):
     opt.load('dart')
-    opt.load('bullet')
+#    opt.load('bullet')
 
 def configure(conf):
     conf.load('dart')
-    conf.load('bullet')
-    conf.check_bullet()
+ #   conf.load('bullet')
+  #  conf.check_bullet()
     conf.check_dart()
 
 

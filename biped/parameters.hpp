@@ -23,7 +23,7 @@ struct Params{
         static constexpr dart_dyn::Joint::ActuatorType actuactor_type = dart_dyn::Joint::VELOCITY;
     };
     struct simu{
-        static constexpr int nb_steps = 1000;
+        static constexpr int nb_steps = 5000;
         SFERES_STRING(model_path,"/home/leni/git/novelty_neat/biped/biped.skel");
     };
     struct evo_float {
@@ -72,8 +72,8 @@ struct Params{
     struct pop
     {
         // size of a batch
-        static constexpr size_t size = 40;
-        static constexpr size_t nb_gen = 51;
+        static constexpr size_t size = 4000;
+        static constexpr size_t nb_gen = 10001;
         static constexpr float initial_aleat = 1.0f;
         static constexpr size_t dump_period = 50;
     };
