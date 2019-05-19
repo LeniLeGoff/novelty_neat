@@ -1,0 +1,477 @@
+<?xml version="1.0" ?>
+<skel version="1.0">
+    <world name="world 1">
+        <physics>
+            <time_step>0.001</time_step>
+            <gravity>0 -9.81 0</gravity>
+            <collision_detector>bullet</collision_detector>
+        </physics>
+        
+        <skeleton name="biped">
+            <transformation>0 0 0 0 0 0</transformation>
+            <body name="h_pelvis">
+                <transformation>0 0 0 0 0 0</transformation>
+                <inertia>
+                    <mass>5.6154</mass>
+                    <offset>0.0 0 0.0</offset>
+                </inertia>
+                <visualization_shape>
+                    <transformation>0.0 0 0.0 0 0 0</transformation>
+                    <geometry>
+                        <box>
+                            <!--size>1.0*0.1088 1.0*0.1088 2.2*0.1088</size-->
+                            <size>0.1088 0.1088 0.23936</size>
+                        </box>
+                    </geometry>
+                </visualization_shape>
+                <collision_shape>
+                    <transformation>0.0 0 0.0 0 0 0</transformation>
+                    <geometry>
+                        <box>
+                            <!--size>1.0*0.1088 1.0*0.1088 2.2*0.1088</size-->
+                            <size>0.1088 0.1088 0.23936</size>
+                        </box>
+                    </geometry>
+                </collision_shape>                                
+            </body>
+            
+            <!-- Left Leg -->
+            <body name="h_thigh_left">
+                <transformation>0.01649408 -0.05774016 -0.09072832 0.0 0.0 0.0</transformation>
+                <inertia>
+                    <mass>6.5709</mass>
+                    <offset>0.0 -0.18605 0.0</offset>
+                </inertia>
+                <visualization_shape>
+                    <transformation>0.0 -0.18605 0.0 0.0 0.0 0.0</transformation>
+                    <geometry>
+                        <box>
+                            <!--size>0.2500*0.3721 1.0000*0.3721 0.2500*0.3721</size-->
+                            <size>0.093025 0.3721 0.093025</size>
+                        </box>
+                    </geometry>
+                </visualization_shape>
+                <collision_shape>
+                    <transformation>0.0 -0.18605 0.0 0.0 0.0 0.0</transformation>
+                    <geometry>
+                        <box>
+                            <!--size>0.2500*0.3721 1.0000*0.3721 0.2500*0.3721</size-->
+                            <size>0.093025 0.3721 0.093025</size>
+                        </box>
+                    </geometry>
+                </collision_shape>                                
+            </body>
+
+            <body name="h_shin_left">
+                <transformation>0.01649408 -0.42984016 -0.09072832 0.0 0.0 0.0</transformation>
+                <inertia>
+                    <mass>1.7738</mass>
+                    <offset>0.0 -0.18685 0.0</offset>
+                </inertia>
+                <visualization_shape>
+                    <transformation>0.0 -0.18685 0.0 0.0 0.0 0.0</transformation>
+                    <geometry>
+                        <box>
+                            <!--size>0.2000*0.3737 1.0000*0.3737 0.2000*0.3737</size-->
+                            <size>0.07474 0.3737 0.07474</size>
+                        </box>
+                    </geometry>
+                </visualization_shape>
+                <collision_shape>
+                    <transformation>0.0 -0.18685 0.0 0.0 0.0 0.0</transformation>
+                    <geometry>
+                        <box>
+                            <!--size>0.2000*0.3737 1.0000*0.3737 0.2000*0.3737</size-->
+                            <size>0.07474 0.3737 0.07474</size>
+                        </box>
+                    </geometry>
+                </collision_shape>                                
+            </body>
+
+            <body name="h_heel_left">
+                <transformation>0.01649408 -0.80354016 -0.09072832 0.0 0.0 0.0</transformation>
+                <inertia>
+                    <mass>0.5831</mass>
+                    <offset>0.0216 -0.0216 0.0</offset>
+                </inertia>
+                <visualization_shape>
+                    <transformation>0.0216 -0.0216 0.0 0.0 0.0 0.0</transformation>
+                    <geometry>
+                        <box>
+                            <!--size>1.0000*0.108 0.5000*0.108 1.0000*0.108</size-->
+                            <size>0.1080 0.0540 0.1080</size>
+                        </box>
+                    </geometry>
+                    <color>1.0 0.5 0.0</color>
+                </visualization_shape>
+                <collision_shape>
+                    <transformation>0.0216 -0.0216 0.0 0.0 0.0 0.0</transformation>
+                    <geometry>
+                        <box>
+                            <!--size>1.0000*0.108 0.5000*0.108 1.0000*0.108</size-->
+                            <size>0.1080 0.0540 0.1080</size>
+                        </box>
+                    </geometry>
+                </collision_shape>                                
+            </body>
+
+            <body name="h_toe_left">
+                <transformation>0.12649408 -0.80354016 -0.09072832 0.0 0.0 0.0</transformation>
+                <inertia>
+                    <mass>0.50</mass>
+                    <offset>0.02 -0.02 0.0</offset>
+                </inertia>
+                <visualization_shape>
+                    <transformation>0.02 -0.02 0.0 0.0 0.0 0.0</transformation>
+                    <geometry>
+                        <box>
+                            <!--size>1.0000*0.1 0.5000*0.1 0.8000*0.1</size-->
+                            <size>0.1000 0.0500 0.0800</size>
+                        </box>
+                    </geometry>
+                    <color>1.0 0.5 0.0</color>
+                </visualization_shape>
+                <collision_shape>
+                    <transformation>0.02 -0.02 0.0 0.0 0.0 0.0</transformation>
+                    <geometry>
+                        <box>
+                            <!--size>1.0000*0.1 0.5000*0.1 0.8000*0.1</size-->
+                            <size>0.1000 0.0500 0.0800</size>
+                        </box>
+                    </geometry>
+                </collision_shape>                                
+            </body>
+
+            <!-- Right Leg -->
+            <body name="h_thigh_right">
+                <transformation>0.01649408 -0.05774016 0.09072832 0.0 0.0 0.0</transformation>
+                <inertia>
+                    <mass>6.5709</mass>
+                    <offset>0.0 -0.18605 0.0</offset>
+                </inertia>
+                <visualization_shape>
+                    <transformation>0.0 -0.18605 0.0 0.0 0.0 0.0</transformation>
+                    <geometry>
+                        <box>
+                            <!--size>0.2500*0.3721 1.0000*0.3721 0.2500*0.3721</size-->
+                            <size>0.093025 0.3721 0.093025</size>
+                        </box>
+                    </geometry>
+                </visualization_shape>
+                <collision_shape>
+                    <transformation>0.0 -0.18605 0.0 0.0 0.0 0.0</transformation>
+                    <geometry>
+                        <box>
+                            <!--size>0.2500*0.3721 1.0000*0.3721 0.2500*0.3721</size-->
+                            <size>0.093025 0.3721 0.093025</size>
+                        </box>
+                    </geometry>
+                </collision_shape>                                
+            </body>
+
+            <body name="h_shin_right">
+                <transformation>0.01649408 -0.42984016 0.09072832 0.0 0.0 0.0</transformation>
+                <inertia>
+                    <mass>1.7738</mass>
+                    <offset>0.0 -0.18685 0.0</offset>
+                </inertia>
+                <visualization_shape>
+                    <transformation>0.0 -0.18685 0.0 0.0 0.0 0.0</transformation>
+                    <geometry>
+                        <box>
+                            <!--size>0.2000*0.3737 1.0000*0.3737 0.2000*0.3737</size-->
+                            <size>0.07474 0.3737 0.07474</size>
+                        </box>
+                    </geometry>
+                </visualization_shape>
+                <collision_shape>
+                    <transformation>0.0 -0.18685 0.0 0.0 0.0 0.0</transformation>
+                    <geometry>
+                        <box>
+                            <!--size>0.2000*0.3737 1.0000*0.3737 0.2000*0.3737</size-->
+                            <size>0.07474 0.3737 0.07474</size>
+                        </box>
+                    </geometry>
+                </collision_shape>                                
+            </body>
+
+            <body name="h_heel_right">
+                <transformation>0.01649408 -0.80354016 0.09072832 0.0 0.0 0.0</transformation>
+                <inertia>
+                    <mass>0.5831</mass>
+                    <offset>0.0216 -0.0216 0.0</offset>
+                </inertia>
+                <visualization_shape>
+                    <transformation>0.0216 -0.0216 0.0 0.0 0.0 0.0</transformation>
+                    <geometry>
+                        <box>
+                            <!--size>1.0000*0.108 0.5000*0.108 1.0000*0.108</size-->
+                            <size>0.1080 0.0540 0.1080</size>
+                        </box>
+                    </geometry>
+                    <color>1.0 0.5 0.0</color>
+                </visualization_shape>
+                <collision_shape>
+                    <transformation>0.0216 -0.0216 0.0 0.0 0.0 0.0</transformation>
+                    <geometry>
+                        <box>
+                            <!--size>1.0000*0.108 0.5000*0.108 1.0000*0.108</size-->
+                            <size>0.1080 0.0540 0.1080</size>
+                        </box>
+                    </geometry>
+                </collision_shape>                                
+            </body>
+
+            <body name="h_toe_right">
+                <transformation>0.12649408 -0.80354016 0.09072832 0.0 0.0 0.0</transformation>
+                <inertia>
+                    <mass>0.50</mass>
+                    <offset>0.02 -0.02 0.0</offset>
+                </inertia>
+                <visualization_shape>
+                    <transformation>0.02 -0.02 0.0 0.0 0.0 0.0</transformation>
+                    <geometry>
+                        <box>
+                            <!--size>1.0000*0.1 0.5000*0.1 0.8000*0.1</size-->
+                            <size>0.1000 0.0500 0.0800</size>
+                        </box>
+                    </geometry>
+                    <color>1.0 0.5 0.0</color>
+                </visualization_shape>
+                <collision_shape>
+                    <transformation>0.02 -0.02 0.0 0.0 0.0 0.0</transformation>
+                    <geometry>
+                        <box>
+                            <!--size>1.0000*0.1 0.5000*0.1 0.8000*0.1</size-->
+                            <size>0.1000 0.0500 0.0800</size>
+                        </box>
+                    </geometry>
+                </collision_shape>                                
+            </body>
+
+            <!-- Upper Body -->
+<!--             <body name="h_abdomen">
+                <transformation>0.0 0.0562 0.0 0.0 0.0 0.0</transformation>
+                <inertia>
+                    <mass>4.1846</mass>
+                    <offset>0.0 0.12535 0.0</offset>
+                </inertia>
+                <visualization_shape>
+                    <transformation>0.0 0.12535 0.0 0.0 0.0 0.0</transformation>
+                    <geometry>
+                        <box>
+                            <size>0.12535 0.2507 0.17549</size>
+                        </box>
+                    </geometry>
+                </visualization_shape>
+                <collision_shape>
+                    <transformation>0.0 0.12535 0.0 0.0 0.0 0.0</transformation>
+                    <geometry>
+                        <box>
+                            <size>0.12535 0.2507 0.17549</size>
+                        </box>
+                    </geometry>
+                </collision_shape>                                
+            </body>
+
+ -->            <!-- <body name="h_spine">
+                <transformation>0.0 0.3069 0.0 0.0 0.0 0.0</transformation>
+                <inertia>
+                    <mass>4.8608</mass>
+                    <offset>0.0 0.0908 0.0</offset>
+                </inertia>
+                <visualization_shape>
+                    <transformation>0.0 0.0908 0.0 0.0 0.0 0.0</transformation>
+                    <geometry>
+                        <box>
+                            <size>0.0908 0.1816 0.0908</size>
+                        </box>
+                    </geometry>
+                </visualization_shape>
+                <collision_shape>
+                    <transformation>0.0 0.0908 0.0 0.0 0.0 0.0</transformation>
+                    <geometry>
+                        <box>
+                            <size>0.0908 0.1816 0.0908</size>
+                        </box>
+                    </geometry>
+                </collision_shape>                                
+            </body> -->
+
+            
+            <!-- JOINT: Pelvis -->
+            <joint type="free" name="j_pelvis">
+                <parent>world</parent>
+                <child>h_pelvis</child>
+                <init_pos>0 0 0 0 0 0</init_pos>
+                <init_vel>0 0 0 0 0 0</init_vel>
+            </joint>
+
+            <!-- JOINT: Left Leg -->
+            <joint type="euler" name="j_thigh_left">
+                <transformation>0.0 0.0 0.0 0.0 0.0 0.0</transformation>
+                <parent>h_pelvis</parent>
+                <child>h_thigh_left</child>
+                <axis_order>zyx</axis_order>
+                <init_pos>0 0 0</init_pos>
+                <init_vel>0 0 0</init_vel>
+            </joint>
+
+            <joint type="revolute" name="j_shin_left">
+                <transformation>0.0 0.0 0.0 0.0 0.0 0.0</transformation>
+                <parent>h_thigh_left</parent>
+                <child>h_shin_left</child>
+                <axis>
+                  <xyz>0.0 0.0 1.0</xyz>
+                  <limit>
+                    <lower>-3.14</lower>
+                    <upper>0.0</upper>
+                  </limit>                  
+                </axis>
+                <init_pos>-0.17</init_pos>
+                <init_vel>0</init_vel>
+            </joint>
+
+            <joint type="universal" name="j_heel_left">
+                <transformation>0.0 0.0 0.0 0.0 0.0 0.0</transformation>
+                <parent>h_shin_left</parent>
+                <child>h_heel_left</child>
+                <axis>
+                    <xyz>0.0 0.0 1.0</xyz>
+                  <limit>
+                    <lower>-1.57</lower>
+                    <upper>3.14</upper>
+                  </limit>                  
+                </axis>
+                <axis2>
+                    <xyz>1.0 0.0 0.0</xyz>
+                  <limit>
+                    <lower>-1.57</lower>
+                    <upper>1.57</upper>
+                  </limit>                  
+                </axis2>
+                <init_pos>0 0</init_pos>
+                <init_vel>0 0</init_vel>
+            </joint>
+
+            <joint type="revolute" name="j_toe_left">
+                <transformation>0.0 0.0 0.0 0.0 0.0 0.0</transformation>
+                <parent>h_heel_left</parent>
+                <child>h_toe_left</child>
+                <axis>
+                    <xyz>0.0 0.0 1.0</xyz>
+                  <limit>
+                    <lower>-1.57</lower>
+                    <upper>1.57</upper>
+                  </limit>                  
+                </axis>
+                <init_pos>0</init_pos>
+                <init_vel>0</init_vel>
+            </joint>
+
+            <!-- JOINT: Right Leg -->
+            <joint type="euler" name="j_thigh_right">
+                <transformation>0.0 0.0 0.0 0.0 0.0 0.0</transformation>
+                <parent>h_pelvis</parent>
+                <child>h_thigh_right</child>
+                <axis_order>zyx</axis_order>
+                <init_pos>0 0 0</init_pos>
+                <init_vel>0 0 0</init_vel>
+            </joint>
+
+            <joint type="revolute" name="j_shin_right">
+                <transformation>0.0 0.0 0.0 0.0 0.0 0.0</transformation>
+                <parent>h_thigh_right</parent>
+                <child>h_shin_right</child>
+                <axis>
+                    <xyz>0.0 0.0 1.0</xyz>
+                  <limit>
+                    <lower>-3.14</lower>
+                    <upper>0.0</upper>
+                  </limit>                  
+                </axis>
+                <init_pos>-0.17</init_pos>
+                <init_vel>0</init_vel>
+            </joint>
+
+            <joint type="universal" name="j_heel_right">
+                <transformation>0.0 0.0 0.0 0.0 0.0 0.0</transformation>
+                <parent>h_shin_right</parent>
+                <child>h_heel_right</child>
+                <axis>
+                    <xyz>0.0 0.0 1.0</xyz>
+                  <limit>
+                    <lower>-1.57</lower>
+                    <upper>3.14</upper>
+                  </limit>                  
+                </axis>
+                <axis2>
+                  <xyz>1.0 0.0 0.0</xyz>
+                  <limit>
+                    <lower>-1.57</lower>
+                    <upper>1.57</upper>
+                  </limit>                  
+                </axis2>
+                <init_pos>0 0</init_pos>
+                <init_vel>0 0</init_vel>
+            </joint>
+
+            <joint type="revolute" name="j_toe_right">
+                <transformation>0.0 0.0 0.0 0.0 0.0 0.0</transformation>
+                <parent>h_heel_right</parent>
+                <child>h_toe_right</child>
+                <axis>
+                    <xyz>0.0 0.0 1.0</xyz>
+                    <limit>
+                      <lower>-1.57</lower>
+                      <upper>1.57</upper>
+                    </limit>                  
+                </axis>
+                <init_pos>0</init_pos>
+                <init_vel>0</init_vel>
+            </joint>
+
+            <!-- -->
+          <!--   <joint type="universal" name="j_abdomen">
+                <transformation>0.0 0.0 0.0 0.0 0.0 0.0</transformation>
+                <parent>h_pelvis</parent>
+                <child>h_abdomen</child>
+                <axis>
+                    <xyz>1.0 0.0 0.0</xyz>
+                    <limit>
+                      <lower>-1.57</lower>
+                      <upper>1.57</upper>
+                    </limit>                  
+                </axis>
+                <axis2>
+                    <xyz>0.0 0.0 1.0</xyz>
+                    <limit>
+                      <lower>-1.57</lower>
+                      <upper>1.57</upper>
+                    </limit>                  
+                </axis2>
+                <init_pos>0 0</init_pos>
+                <init_vel>0 0</init_vel>
+            </joint>
+
+            <joint type="revolute" name="j_spine">
+                <transformation>0.0 0.0 0.0 0.0 0.0 0.0</transformation>
+                <parent>h_abdomen</parent>
+                <child>h_spine</child>
+                <axis>
+                    <xyz>0.0 1.0 0.0</xyz>
+                    <limit>
+                      <lower>-3.14</lower>
+                      <upper>3.14</upper>
+                    </limit>                  
+                </axis>
+                <init_pos>0</init_pos>
+                <init_vel>0</init_vel>
+            </joint>
+ -->
+        </skeleton>	
+
+    </world>
+</skel>
+
+
