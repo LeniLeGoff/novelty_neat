@@ -38,12 +38,21 @@ def build(bld):
                             'NOVELTY NEAT VISU',
                             'NOVELTY NEAT',
                             'NOVELTY RNN VISU',
-                            'NOVELTY RNN',
+                            'NOVELTY RNN NB_HIDDEN_0',
+                            'NOVELTY RNN NB_HIDDEN_2',
+                            'NOVELTY RNN NB_HIDDEN_4',
+                            'NOVELTY RNN NB_HIDDEN_8',
+                            'NOVELTY RNN NB_HIDDEN_16',
                             'NOVELTY VISU',
                             'NOVELTY',
+                            'NOVELTY NB_HIDDEN_0',
+                            'NOVELTY NB_HIDDEN_2',
+                            'NOVELTY NB_HIDDEN_4',
+                            'NOVELTY NB_HIDDEN_8',
+                            'NOVELTY NB_HIDDEN_16',
                             'VISU'
                             ])
-  
+'''  
   bld.program(features = 'cxx',
                 source = 'biped/test-dart.cpp',
                 includes = '../../ /usr/include/ /usr/include/eigen3/ /home/le_goff/libraries/include',
@@ -52,21 +61,20 @@ def build(bld):
                 target = 'test-dart')
 
 
-  
-  #sferes.create_variants(bld,
-   #                     source = 'biped/biped_walk.cpp biped/biped.cpp',
-    #                    includes = '../../ ../../modules /usr/include/eigen3 /usr/include/ /home/le_goff/libraries/include/',
-     #                   uselib = libs + ' DART',
-      #                  use = 'sferes2 nn2 fastsim',
-       #                 target = 'biped_walk',
-        #                variants = [
-                            #'NOVELTY NEAT VISU',
-         #                   'NOVELTY NEAT',
-                            #'NOVELTY RNN VISU',
-          #                  'NOVELTY RNN',
-                            #'NOVELTY VISU',
-           #                 'NOVELTY',
-                            #'VISU'
-            #                ])
-
+  sferes.create_variants(bld,
+                        source = 'biped/biped_walk.cpp biped/biped.cpp',
+                        includes = '../../ ../../modules /usr/include/eigen3 /usr/include/',
+                        uselib = libs + ' DART BULLET',
+                        use = 'sferes2 nn2 fastsim',
+                        target = 'biped_walk',
+                        variants = [
+                            'NOVELTY NEAT VISU',
+                            'NOVELTY NEAT',
+                            'NOVELTY RNN VISU',
+                            'NOVELTY RNN',
+                            'NOVELTY VISU',
+                            'NOVELTY',
+                            'VISU'
+                            ])
+'''
   
