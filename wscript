@@ -38,12 +38,21 @@ def build(bld):
                             'NOVELTY NEAT VISU',
                             'NOVELTY NEAT',
                             'NOVELTY RNN VISU',
-                            'NOVELTY RNN',
+                            'NOVELTY RNN NB_HIDDEN_0',
+                            'NOVELTY RNN NB_HIDDEN_2',
+                            'NOVELTY RNN NB_HIDDEN_4',
+                            'NOVELTY RNN NB_HIDDEN_8',
+                            'NOVELTY RNN NB_HIDDEN_16',
                             'NOVELTY VISU',
                             'NOVELTY',
+                            'NOVELTY NB_HIDDEN_0',
+                            'NOVELTY NB_HIDDEN_2',
+                            'NOVELTY NB_HIDDEN_4',
+                            'NOVELTY NB_HIDDEN_8',
+                            'NOVELTY NB_HIDDEN_16',
                             'VISU'
                             ])
-  
+'''  
   bld.program(features = 'cxx',
                 source = 'biped/test-dart.cpp',
                 includes = '../../ /usr/include/ /usr/include/eigen3/',
@@ -66,5 +75,5 @@ def build(bld):
                             'NOVELTY',
                             'VISU'
                             ])
-
+'''
   

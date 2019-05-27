@@ -27,6 +27,7 @@
 #include "stat_bd.hpp"
 #include "stat_success.hpp"
 //#include "stat_traj.hpp"
+#include "stat_bd_skew_kurt.hpp"
 
 #include "phen_static_nn.hpp"
 #include "gen_static_nn.hpp"
@@ -85,8 +86,8 @@ int main(int argc, char** argv){
     typedef boost::fusion::vector<
             sf::stat::ParetoFront<phen_t, Params>,
             sf::stat::BD<phen_t, Params>,
-            sf::stat::Success<phen_t, Params>
-            //      sf::stat::Traj<phen_t, Params>
+            sf::stat::Success<phen_t, Params>,
+            sf::stat::BDSkewnessKurtosis<phen_t, Params>
             >  stat_t;
 
     typedef sf::ea::Nsga2<phen_t, eval_t, stat_t, modifier_t, Params> ea_t;

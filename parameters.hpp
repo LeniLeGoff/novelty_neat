@@ -43,7 +43,19 @@ struct Params{
         static constexpr sf::gen::dnn::init_t init = sf::gen::dnn::ff;
     };
     struct static_nn{
+#if defined(NB_HIDDEN_0)
+        static constexpr size_t nb_hidden = 0;
+#elif defined(NB_HIDDEN_2)
+        static constexpr size_t nb_hidden = 2;
+#elif defined(NB_HIDDEN_4)
+        static constexpr size_t nb_hidden = 4;
+#elif defined(NB_HIDDEN_8)
+        static constexpr size_t nb_hidden = 8;
+#elif defined(NB_HIDDEN_16)
+        static constexpr size_t nb_hidden = 16;
+#else
         static constexpr size_t nb_hidden = 5;
+#endif
     };
     struct ea
     {
