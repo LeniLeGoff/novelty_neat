@@ -58,6 +58,7 @@ struct Params{
     {
         // size of a batch
         static constexpr size_t size = 400;
+
         static constexpr size_t nb_gen = 10001;
         static constexpr float initial_aleat = 2.0f;
         static constexpr size_t dump_period = 50;

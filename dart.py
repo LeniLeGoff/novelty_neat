@@ -33,7 +33,7 @@ def check_dart(conf):
     conf.end_msg('ok')
 
     # Find the lib files
-    libs = ['dart', 'dart-planning', 'dart-external-imgui', 'dart-collision-bullet', 'dart-collision-ode', 'dart-external-lodepng', 'dart-gui-osg', 'dart-gui', 'dart-utils', 'dart-utils-urdf', 'dart-optimizer-nlopt'] #'dart-optimizer-ipopt', 
+    libs = ['dart','dart-utils','dart-external-odelcpsolver'] #'dart-optimizer-ipopt', 
     conf.start_msg('Checking for Dart libs')
     for lib in libs:
       libOK = conf.find_file('lib'+lib+'.so', libs_check)
@@ -42,7 +42,7 @@ def check_dart(conf):
 
     conf.env.INCLUDES_DART = includes_check + [conf.env.INCLUDES_BULLET[0]+"/bullet"] # Fix weird Dart include of Bullet
     conf.env.LIBPATH_DART = libs_check
-    conf.env.LIB_DART = libs + ["assimp", "osg", "osgViewer"]
+    conf.env.LIB_DART = libs + ["assimp"]
 #    conf.env.DEFINES_DART = ['USE_DART']
   except:
     conf.end_msg('Not found', 'RED')

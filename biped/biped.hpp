@@ -37,8 +37,10 @@
 
 #include <dart/dart.hpp>
 #include <dart/utils/utils.hpp>
+#ifdef VISU
 #include <dart/gui/gui.hpp>
 #include <dart/gui/osg/osg.hpp>
+#endif
 
 #define SIM_STABLE_MIN_STEPS 100 // How long to wait before the sim become stable
 #define TARGET_VISU_HZ	60.
@@ -51,8 +53,10 @@ const int default_countdown = 100;  // Number of timesteps for applying force
 using namespace dart::common;
 using namespace dart::dynamics;
 using namespace dart::simulation;
+#ifdef VISU
 using namespace dart::gui;
 using namespace dart::gui::osg;
+#endif
 using namespace dart::utils;
 using namespace dart::math;
 
@@ -128,7 +132,9 @@ public:
     /// Constructor
     Simulation(Joint::ActuatorType at, const std::string &model_path);
 
+#ifdef VISU
     void init_visu();
+#endif
     void update(int time_idx);
     void reset();
 
@@ -149,8 +155,10 @@ protected:
     unsigned int _steps_per_frame;
     double _timestep;
 
+#ifdef VISU
     ImGuiViewer* _osgViewer;
     WorldNode* _osgWorldNode;
+#endif
 
     bool _spd_enabled = false;
     bool _ankle_strat_enabled = false;

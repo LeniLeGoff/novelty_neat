@@ -24,14 +24,9 @@ SFERES_FITNESS(FitBipedWalk,sf::fit::Fitness){
         _simu->reset();
 
 #ifdef VISU
-        if(true)
-#else
-        if(false)
+        std::cout << "Initiatlization of the visualisation" << std::endl;
+        _simu->init_visu();
 #endif
-        {
-            std::cout << "Initiatlization of the visualisation" << std::endl;
-            _simu->init_visu();
-        }
 
 
         for(int i = 0; i < biped::Params::simu::nb_steps && !stop_eval;){

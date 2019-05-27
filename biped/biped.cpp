@@ -212,8 +212,8 @@ Simulation::Simulation(Joint::ActuatorType at, const std::string &model_path)
     : _force_count_down(0),
       _positive_sign(true)
 {
-    _osgViewer = nullptr;
-    _osgWorldNode = nullptr;
+    //_osgViewer = nullptr;
+    //_osgWorldNode = nullptr;
 
 
     SkeletonPtr biped = _loadBiped(model_path);
@@ -239,7 +239,7 @@ Simulation::Simulation(Joint::ActuatorType at, const std::string &model_path)
 }
 
 
-
+#ifdef VISU
 void Simulation::init_visu(){
     // Create a WorldNode
     _osgWorldNode = new dart::gui::osg::WorldNode(_world, nullptr);
@@ -269,7 +269,7 @@ void Simulation::init_visu(){
     _osgViewer->setCameraManipulator(_osgViewer->getCameraManipulator());
     _steps_per_frame = std::ceil(1./(_world->getTimeStep()*TARGET_VISU_HZ));
 }
-
+#endif
 
 void Simulation::update(int time_idx)
 {
@@ -303,11 +303,13 @@ void Simulation::update(int time_idx)
     _world->step();
 
     // If we have a viewer (visualization mode), update it
+#ifdef VISU
     if(_osgViewer)
     {
       if(time_idx % _steps_per_frame == 0)
         _osgViewer->frame();
     }
+#endif
 }
 
 void Simulation::reset(){
