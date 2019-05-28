@@ -2,8 +2,8 @@
 #define STAT_BD_SKEWNESS_KURTOSIS_HPP
 
 #include <sferes/stat/stat.hpp>
-#include <eigen3/Eigen/Core>
-#include <eigen3/Eigen/Dense>
+//#include <eigen3/Eigen/Core>
+#include <Eigen/Dense>
 
 namespace sferes
 {
