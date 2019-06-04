@@ -9,12 +9,12 @@ struct Params{
     struct simu {
       static constexpr float dt = 0.01;
       static constexpr int nb_steps = 1000;
-//      SFERES_STRING(map_name, "../../../modules/fastsim/maze.pbm");
+//      SFERES_STRING(map_name, "/home/le_goff/git/sferes2/modules/fastsim/maze.pbm");
 //      static constexpr float init_pos_x = 40;
 //      static constexpr float init_pos_y = 360;
 //      static constexpr float init_pos_theta = M_PI/4.0;
 
-      SFERES_STRING(map_name, "/home/leni/git/novelty_neat/multi2.pbm");
+      SFERES_STRING(map_name, "/home/le_goff/git/novelty_neat/multi2.pbm");
       static constexpr float init_pos_x = 300;
       static constexpr float init_pos_y = 540;
       static constexpr float init_pos_theta = M_PI/4.0;
