@@ -87,11 +87,11 @@ int main(int argc, char** argv){
     typedef boost::fusion::vector<
             sf::stat::ParetoFront<phen_t, Params>,
             sf::stat::BD<phen_t, Params>,
-            sf::stat::Success<phen_t, Params>,
-        #ifndef NEAT
-            sf::stat::GenSkewnessKurtosis<phen_t, Params>,
-        #endif
-            sf::stat::BDSkewnessKurtosis<phen_t, Params>
+            sf::stat::Success<phen_t, Params>
+//        #ifndef NEAT
+//            sf::stat::GenSkewnessKurtosis<phen_t, Params>,
+//        #endif
+//            sf::stat::BDSkewnessKurtosis<phen_t, Params>
             >  stat_t;
 
     typedef sf::ea::Nsga2<phen_t, eval_t, stat_t, modifier_t, Params> ea_t;

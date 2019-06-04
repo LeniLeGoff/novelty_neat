@@ -193,6 +193,8 @@ SFERES_FITNESS(FitMazeNavigation,sf::fit::Fitness){
         old_pos=simu.robot().get_pos();
         inputs.resize(Params::dnn::nb_inputs);
 
+        std::cout << "Map size : " << simu.map()->get_real_w() << std::endl;
+
         //#ifdef TOWARDSCORNER
         //      simu.robot().set_pos(fs::Posture(simu.map()->get_real_w()*0.1,simu.map()->get_real_w()*0.1, -3.*M_PI/4.0));
         //#elif TURNED
@@ -200,7 +202,7 @@ SFERES_FITNESS(FitMazeNavigation,sf::fit::Fitness){
         //#elif LOWERLEFT
         //      simu.robot().set_pos(fs::Posture(simu.map()->get_real_w()*0.1,simu.map()->get_real_w()*0.9, -M_PI/2.0));
         ////#else
-        simu.robot().set_pos(fs::Posture(simu.map()->get_real_w()*0.1, simu.map()->get_real_w() - simu.map()->get_real_w()*0.1, M_PI/4.0));
+        simu.robot().set_pos(fs::Posture(Params::simu::init_pos_x, Params::simu::init_pos_y, Params::simu::init_pos_theta));
         //#endif
         simu.robot().move(0,0,simu.map());
 
