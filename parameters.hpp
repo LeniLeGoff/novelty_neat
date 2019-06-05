@@ -14,10 +14,22 @@ struct Params{
 //      static constexpr float init_pos_y = 360;
 //      static constexpr float init_pos_theta = M_PI/4.0;
 
+
+//      SFERES_STRING(map_name, "/home/leni/git/novelty_neat/multi.pbm");
+//      static constexpr float init_pos_x = 300;
+//      static constexpr float init_pos_y = 560;
+//      static constexpr float init_pos_theta = M_PI/4.0;
+
       SFERES_STRING(map_name, "/home/leni/git/novelty_neat/multi2.pbm");
       static constexpr float init_pos_x = 300;
       static constexpr float init_pos_y = 540;
       static constexpr float init_pos_theta = M_PI/4.0;
+
+
+//      SFERES_STRING(map_name, "/home/leni/git/novelty_neat/subset.pbm");
+//      static constexpr float init_pos_x = 300;
+//      static constexpr float init_pos_y = 215;
+//      static constexpr float init_pos_theta = M_PI/4.0;
 
     };
     struct evo_float {
@@ -109,6 +121,23 @@ struct Params{
         static constexpr float max_x3=0.25;
         static constexpr float min_y3=0.15;
         static constexpr float max_y3=0.25;*/
+
+
+        //multi
+//        static constexpr float min_x1=0.45;
+//        static constexpr float max_x1=0.55;
+//        static constexpr float min_y1=0.;
+//        static constexpr float max_y1=0.1;
+
+//        static constexpr float min_x2=0.85;
+//        static constexpr float max_x2=0.95;
+//        static constexpr float min_y2=0.7;
+//        static constexpr float max_y2=0.8;
+
+//        static constexpr float min_x3=0.1;
+//        static constexpr float max_x3=0.2;
+//        static constexpr float min_y3=0.1;
+//        static constexpr float max_y3=0.2;
         
         //multi2
         static constexpr float min_x1=0.45;
@@ -125,6 +154,22 @@ struct Params{
         static constexpr float max_x3=0.45;
         static constexpr float min_y3=0.35;
         static constexpr float max_y3=0.45;
+
+        //subset
+//        static constexpr float min_x1=1.;
+//        static constexpr float max_x1=0.9;
+//        static constexpr float min_y1=0.23;
+//        static constexpr float max_y1=0.33;
+
+//        static constexpr float min_x2=0.1;
+//        static constexpr float max_x2=0.2;
+//        static constexpr float min_y2=0.1;
+//        static constexpr float max_y2=0.2;
+
+//        static constexpr float min_x3=0.35;
+//        static constexpr float max_x3=0.45;
+//        static constexpr float min_y3=0.95;
+//        static constexpr float max_y3=0.85;
     };
 };
 
