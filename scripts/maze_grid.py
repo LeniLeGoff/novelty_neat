@@ -38,12 +38,14 @@ def write_hist(filename,hist) :
             f.write("\n")
 
 
- 
-for file in os.listdir(sys.argv[1]) :
-    if(file.split('_')[0] == "bd") :
-        print(file)
-        filename = str(sys.argv[1]) + file
-        hist_filename = str(sys.argv[1]) + "grid_" + file
-        pointx,pointy = load_data(filename,3)
-        hist = convert_to_hist_grid(pointx,pointy,bin=12)
-        write_hist(hist_filename,hist)
+for folder in os.listdir(sys.argv[1]) :
+    if not os.path.isdir(folder) :
+        continue
+    for file in os.listdir(folder) :
+        if(file.split('_')[0] == "bd") :
+            print(file)
+            filename = str(sys.argv[1]) + file
+            hist_filename = str(sys.argv[1]) + "grid_" + file
+            pointx,pointy = load_data(filename,3)
+            hist = convert_to_hist_grid(pointx,pointy,bin=12)
+            write_hist(hist_filename,hist)
