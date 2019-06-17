@@ -24,8 +24,8 @@ def convert_to_hist_grid(pointx,pointy,bin = 6) :
             x = bin - 1 
         if(pointy[i] >= 600.) : 
             y = bin - 1
-        print(pointx[i],pointy[i])
-        print(x,y)
+#        print(pointx[i],pointy[i])
+#        print(x,y)
         hist[x][y]+=1
     
     return hist
@@ -37,15 +37,16 @@ def write_hist(filename,hist) :
                 f.write(str(elt)+" ")
             f.write("\n")
 
-
 for folder in os.listdir(sys.argv[1]) :
-    if not os.path.isdir(folder) :
+    if os.path.isfile(folder) :
         continue
-    for file in os.listdir(folder) :
+    print(folder)
+    for file in os.listdir(sys.argv[1] + "/" + folder) :
         if(file.split('_')[0] == "bd") :
-            print(file)
-            filename = str(sys.argv[1]) + file
-            hist_filename = str(sys.argv[1]) + "grid_" + file
+            #print(file)
+            filename = str(sys.argv[1]) + "/" + folder + "/"  + file
+            hist_filename = str(sys.argv[1]) + "/" + folder + "/" + "grid_" + file
             pointx,pointy = load_data(filename,3)
             hist = convert_to_hist_grid(pointx,pointy,bin=12)
             write_hist(hist_filename,hist)
+
