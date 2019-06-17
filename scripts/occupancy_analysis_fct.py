@@ -53,10 +53,8 @@ def read_hist(filename) :
 
 
 def JSD(P,Q) :
-    print(P,Q)
     P = P / nplinalg.norm(P,ord=1)
     Q = Q / nplinalg.norm(Q,ord=1)
-    print(P,Q)
     M = (P + Q)*.5
     return (spstat.entropy(P,M) + spstat.entropy(Q,M))*.5
 
