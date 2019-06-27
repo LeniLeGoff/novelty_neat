@@ -29,6 +29,7 @@
 //#include "stat_traj.hpp"
 #include "stat_bd_skew_kurt.hpp"
 #include "stat_gen_skew_kurt.hpp"
+#include "stat_neat.hpp"
 
 #include "phen_static_nn.hpp"
 #include "gen_static_nn.hpp"
@@ -88,6 +89,9 @@ int main(int argc, char** argv){
             sf::stat::ParetoFront<phen_t, Params>,
             sf::stat::BD<phen_t, Params>,
             sf::stat::Success<phen_t, Params>
+        #ifdef NEAT
+            ,sf::stat::Neat<phen_t, Params>
+        #endif
 //        #ifndef NEAT
 //            sf::stat::GenSkewnessKurtosis<phen_t, Params>,
 //        #endif
