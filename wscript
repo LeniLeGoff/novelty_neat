@@ -30,7 +30,7 @@ def build(bld):
 
   sferes.create_variants(bld,
                         source = 'maze.cpp',
-                        includes = '../../ ../../modules /home/le_goff/libraries/include/eigen3 /home/le_goff/libraries/include/ /usr/include/ /usr/include/SDL',
+                        includes = '../../ ../../modules /home/le_goff/libraries/include/eigen3 /home/le_goff/libraries/include/ /usr/include/ /usr/include/SDL /usr/include/eigen3/',
                         uselib = libs + ' SDL',
                         use = 'sferes2 nn2 fastsim',
                         target = 'maze',

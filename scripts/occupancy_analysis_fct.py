@@ -1,7 +1,9 @@
 #! /usr/bin/python
 
 import scipy.stats as spstat
+import numpy as np
 import numpy.linalg as nplinalg
+
 
 def load_data(filename, pos = 0) :
     pointx = []
@@ -36,7 +38,6 @@ def write_hist(filename,hist) :
                 f.write(str(elt)+" ")
             f.write("\n")
 
-
 def read_hist(filename) :
     hist = []
     with open(filename) as f :
@@ -48,9 +49,6 @@ def read_hist(filename) :
                 templist.append(int(n))
             hist.append(templist)
     return hist        
-
-
-
 
 def JSD(P,Q) :
     P = P / nplinalg.norm(P,ord=1)
@@ -71,3 +69,13 @@ def compute_uniform_dist_score(hist) :
     uni_hist = [uni_ref_val for _ in range(len(hist)*len(hist))]
 
     return 1 - JSD(uni_hist,hist1D)
+
+def median_perc(data) : 
+    median = np.zeros(data.shape[1]) 
+    perc_25 = np.zeros(data.shape[1]) 
+    perc_75 = np.zeros(data.shape[1]) 
+    for i in range(0, len(median)): 
+        median[i] = np.median(data[:, i]) 
+        perc_25[i] = np.percentile(data[:, i], 25) 
+        perc_75[i] = np.percentile(data[:, i], 75) 
+    return median, perc_75, perc_25

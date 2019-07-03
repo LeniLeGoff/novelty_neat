@@ -35,14 +35,13 @@ SFERES_STAT(Neat, Stat)
         for (size_t i = 0; i < ea.pop().size(); ++i)
         {
             outf << ea.pop()[i]->gen().get_nb_neurons() << " ";
-            outf << std::endl;
         }
-
+        outf << std::endl;
         for (size_t i = 0; i < ea.pop().size(); ++i)
         {
             outf << ea.pop()[i]->gen().get_nb_connections() << " ";
-            outf << std::endl;
         }
+        outf << std::endl;
         outf.close();
     }
 

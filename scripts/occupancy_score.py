@@ -26,3 +26,4 @@ for folder in os.listdir(sys.argv[1]) :
     with open(sys.argv[1] + "/" + folder + "/JSD.dat",'w') as jsd_file :
         for i in range(0,len(scores)) :
             jsd_file.write(str(nb_gen[i]) + " " + str(scores[i]) + '\n')
+
