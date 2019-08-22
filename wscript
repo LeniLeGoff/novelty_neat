@@ -18,9 +18,9 @@ def configure(conf):
 
 def build(bld):
   libs = 'EIGEN3 BOOST PTHREAD TBB'  
-  cxxflags = bld.get_env()['CXXFLAGS']
+  cxxflg = bld.get_env()['CXXFLAGS'] 
   print ("Entering directory `" + os.getcwd() + "/modules/'")
-
+ 
   bld.program(features = 'cxx',
                 source = 'maze.cpp',
                 includes = '../../ ../../modules /usr/include/eigen3 /usr/include/ /usr/include/SDL',
@@ -52,20 +52,21 @@ def build(bld):
                             'NOVELTY NB_HIDDEN_16',
                             'VISU'
                             ])
-'''  
+ 
   bld.program(features = 'cxx',
                 source = 'biped/test-dart.cpp',
                 includes = '../../ /usr/include/ /usr/include/eigen3/ /home/le_goff/libraries/include',
-                uselib = libs + ' DART',
-		cxxflags = bld.get_env()['CXXFLAGS'] + '-lassimp',
+                uselib = libs,
+                ldflags = ['-lassimp','-ldart','-ldart-utils'],
                 target = 'test-dart')
 
 
   sferes.create_variants(bld,
                         source = 'biped/biped_walk.cpp biped/biped.cpp',
                         includes = '../../ ../../modules /usr/include/eigen3 /usr/include/',
-                        uselib = libs + ' DART BULLET',
-                        use = 'sferes2 nn2 fastsim',
+                        uselib = libs,
+                        use = 'sferes2 nn2 fastsim', 
+                        ldflags = ['-lassimp','-ldart','-ldart-utils','-ldart-collision-bullet','-ldart-external-odelcpsolver','-losg','-losgViewer','-ldart-gui','-ldart-gui-osg'],
                         target = 'biped_walk',
                         variants = [
                             'NOVELTY NEAT VISU',
@@ -76,5 +77,5 @@ def build(bld):
                             'NOVELTY',
                             'VISU'
                             ])
-'''
-  
+
+

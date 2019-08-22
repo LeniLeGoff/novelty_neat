@@ -31,6 +31,7 @@ def check_dart(conf):
     inclOK = conf.find_file('dart/dart.hpp', includes_check)
     #print inclOK
     conf.end_msg('ok')
+    
 
     # Find the lib files
     libs = ['dart','dart-utils','dart-external-odelcpsolver'] #'dart-optimizer-ipopt', 
@@ -39,6 +40,7 @@ def check_dart(conf):
       libOK = conf.find_file('lib'+lib+'.so', libs_check)
       #print libOK
     conf.end_msg('ok')
+
 
     conf.env.INCLUDES_DART = includes_check + [conf.env.INCLUDES_BULLET[0]+"/bullet"] # Fix weird Dart include of Bullet
     conf.env.LIBPATH_DART = libs_check

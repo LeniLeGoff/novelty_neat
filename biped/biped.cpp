@@ -306,8 +306,10 @@ void Simulation::update(int time_idx)
 #ifdef VISU
     if(_osgViewer)
     {
-      if(time_idx % _steps_per_frame == 0)
-        _osgViewer->frame();
+      if(time_idx % _steps_per_frame == 0){
+          _osgViewer->frame();
+          std::cout << "SIMULATOR : update viewer" << std::endl;
+      }
     }
 #endif
 }
