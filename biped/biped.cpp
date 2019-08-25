@@ -241,7 +241,7 @@ Simulation::Simulation(Joint::ActuatorType at, const std::string &model_path)
 
     _controller = std::make_unique<Controller>(biped,at);
 
-    // _set_self_collision<Params>();
+    _set_self_collision<Params>();
 
 }
 
