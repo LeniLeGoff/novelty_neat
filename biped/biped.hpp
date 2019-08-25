@@ -35,8 +35,13 @@
 #ifndef BIPED_HPP
 #define BIPED_HPP
 
+#include "parameters.hpp"
+
 #include <dart/dart.hpp>
 #include <dart/utils/utils.hpp>
+#include <dart/collision/bullet/BulletCollisionDetector.hpp>
+
+
 #ifdef VISU
 #include <dart/gui/gui.hpp>
 #include <dart/gui/osg/osg.hpp>
@@ -155,6 +160,8 @@ protected:
     unsigned int _steps_per_frame;
     double _timestep;
 
+    bool _self_collision = true;
+
 #ifdef VISU
     ImGuiViewer* _osgViewer;
     WorldNode* _osgWorldNode;
@@ -168,6 +175,9 @@ protected:
     SkeletonPtr _loadBiped(const std::string &model_path);
     // Solve for a balanced pose using IK
     Eigen::VectorXd _solveIK(SkeletonPtr biped);
+
+    template<typename Param> 
+    void _set_self_collision(){_self_collision = Param::simu::self_collision;}
 };
 
 

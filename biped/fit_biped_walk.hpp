@@ -4,7 +4,7 @@
 #include <sferes/fit/fitness.hpp>
 #include <Eigen/Core>
 
-#include "parameters.hpp"
+// #include "parameters.hpp"
 #include "biped.hpp"
 
 namespace sf = sferes;
@@ -17,6 +17,8 @@ SFERES_FITNESS(FitBipedWalk,sf::fit::Fitness){
 
     template<typename Indiv>
     void eval(Indiv& ind){
+        std::cout << "_-_-_-_-_ New Evalutation _-_-_-_-_-__-" << std::endl;
+
         ind.nn().simplify();
 
         this->_objs.resize(1);

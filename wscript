@@ -1,18 +1,21 @@
 #! /usr/bin/env python
 
 import os
+import sys
 import sferes
-import dart#,bullet
+
+sys.path.insert(0,sys.path[0] + '/waf_tools')
+import dart, bullet
 
 def options(opt):
     opt.load('dart')
-#    opt.load('bullet')
+    #opt.load('bullet')
 
 def configure(conf):
     conf.load('dart')
- #   conf.load('bullet')
-  #  conf.check_bullet()
-    conf.check_dart()
+    #conf.load('bullet')
+    #conf.check_bullet()
+    conf.check_dart(required=True)
 
 
 
@@ -56,17 +59,17 @@ def build(bld):
   bld.program(features = 'cxx',
                 source = 'biped/test-dart.cpp',
                 includes = '../../ /usr/include/ /usr/include/eigen3/ /home/le_goff/libraries/include',
-                uselib = libs,
-                ldflags = ['-lassimp','-ldart','-ldart-utils'],
+                uselib = libs + ' DART',
+                #ldflags = ['-lassimp','-ldart','-ldart-utils'],
                 target = 'test-dart')
 
 
   sferes.create_variants(bld,
                         source = 'biped/biped_walk.cpp biped/biped.cpp',
-                        includes = '../../ ../../modules /usr/include/eigen3 /usr/include/',
-                        uselib = libs,
-                        use = 'sferes2 nn2 fastsim', 
-                        ldflags = ['-lassimp','-ldart','-ldart-utils','-ldart-collision-bullet','-ldart-external-odelcpsolver','-losg','-losgViewer','-ldart-gui','-ldart-gui-osg'],
+                        includes = '../../ ../../modules /usr/include/eigen3 /usr/include/ /usr/include/bullet',
+                        uselib = libs + ' DART DART_GRAPHIC',
+                        use = 'sferes2 nn2', 
+                        #ldflags = ['-lassimp','-ldart','-ldart-utils','-ldart-collision-bullet','-ldart-external-odelcpsolver','-losg','-losgViewer','-ldart-gui','-ldart-gui-osg'],
                         target = 'biped_walk',
                         variants = [
                             'NOVELTY NEAT VISU',

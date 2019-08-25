@@ -225,16 +225,23 @@ Simulation::Simulation(Joint::ActuatorType at, const std::string &model_path)
     _world = std::make_shared<World>();
     _world->setGravity(Eigen::Vector3d(0.0, -9.81, 0.0));
 
-    if (dart::collision::CollisionDetector::getFactory()->canCreate("bullet"))
-    {
+    // auto keys = dart::collision::BulletCollisionDetector::getFactory()->getKeys();
+    // for(auto k : keys)
+    //   std::cout << k << std::endl;
+
+    // if (dart::collision::BulletCollisionDetector::getFactory()->canCreate("dart"))
+    // {
         _world->getConstraintSolver()->setCollisionDetector(
-                    dart::collision::CollisionDetector::getFactory()->create("bullet"));
-    }
+                    dart::collision::BulletCollisionDetector::create());
+    // }
+
 
     _world->addSkeleton(floor);
     _world->addSkeleton(biped);
 
-    _controller = dart::common::make_unique<Controller>(biped,at);
+    _controller = std::make_unique<Controller>(biped,at);
+
+    // _set_self_collision<Params>();
 
 }
 
@@ -308,7 +315,6 @@ void Simulation::update(int time_idx)
     {
       if(time_idx % _steps_per_frame == 0){
           _osgViewer->frame();
-          std::cout << "SIMULATOR : update viewer" << std::endl;
       }
     }
 #endif

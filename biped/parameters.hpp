@@ -2,6 +2,8 @@
 #define BIPED_PARAMETERS_HPP
 
 #include <sferes/stc.hpp>
+#include <sferes/gen/evo_float.hpp>
+#include <nn2/gen_dnn.hpp>
 #include <dart/dart.hpp>
 
 namespace sf = sferes;
@@ -25,6 +27,7 @@ struct Params{
     struct simu{
         static constexpr int nb_steps = 5000;
         SFERES_STRING(model_path,"/home/leni/git/novelty_neat/biped/biped.skel");
+        static constexpr bool self_collision = false;
     };
     struct evo_float {
         static constexpr float mutation_rate = 0.1f;
@@ -72,7 +75,7 @@ struct Params{
     struct pop
     {
         // size of a batch
-        static constexpr size_t size = 8;
+        static constexpr size_t size = 20;
         static constexpr size_t nb_gen = 3;
         static constexpr float initial_aleat = 1.0f;
         static constexpr size_t dump_period = 50;
@@ -80,7 +83,7 @@ struct Params{
     struct novelty {
         static constexpr int nb_pos = 2;
         static constexpr float rho_min_init = 1.0;
-        static constexpr size_t k = 8;
+        static constexpr size_t k = 15;
         static constexpr size_t stalled_tresh = 2500;
         static constexpr size_t adding_tresh = 4;
         static constexpr float add_to_archive_prob = 0;
