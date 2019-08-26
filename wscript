@@ -60,8 +60,15 @@ def build(bld):
                 source = 'biped/test-dart.cpp',
                 includes = '../../ /usr/include/ /usr/include/eigen3/ /home/le_goff/libraries/include',
                 uselib = libs + ' DART',
-                #ldflags = ['-lassimp','-ldart','-ldart-utils'],
                 target = 'test-dart')
+
+  bld.program(features = 'cxx',
+                source = 'biped/test_biped.cpp biped/biped.cpp',
+                includes = '../../ ../../modules /usr/include/ /usr/include/eigen3/ /home/le_goff/libraries/include',
+                uselib = libs + ' DART DART_GRAPHIC',
+                defines = 'VISU',
+                #use = 'sferes2 nn2',
+                target = 'test_biped')
 
 
   sferes.create_variants(bld,
@@ -69,7 +76,6 @@ def build(bld):
                         includes = '../../ ../../modules /usr/include/eigen3 /usr/include/ /usr/include/bullet',
                         uselib = libs + ' DART DART_GRAPHIC',
                         use = 'sferes2 nn2', 
-                        #ldflags = ['-lassimp','-ldart','-ldart-utils','-ldart-collision-bullet','-ldart-external-odelcpsolver','-losg','-losgViewer','-ldart-gui','-ldart-gui-osg'],
                         target = 'biped_walk',
                         variants = [
                             'NOVELTY NEAT VISU',

@@ -22,7 +22,7 @@ typedef enum feedback_type{
 struct Params{
     struct biped{
         static constexpr feedback_type fb_type = POSITION;
-        static constexpr dart_dyn::Joint::ActuatorType actuactor_type = dart_dyn::Joint::VELOCITY;
+        static constexpr dart_dyn::Joint::ActuatorType actuator_type = dart_dyn::Joint::VELOCITY;
     };
     struct simu{
         static constexpr int nb_steps = 5000;

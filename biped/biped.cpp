@@ -34,8 +34,9 @@
 
 #include "biped.hpp"
 
-using namespace biped;
 
+using namespace biped;
+namespace dart_constr = dart::constraint;
 
 const std::vector<std::string> Controller::joint_names = {
     "j_thigh_left",
@@ -223,17 +224,19 @@ Simulation::Simulation(Joint::ActuatorType at, const std::string &model_path)
     biped->setPositions(balancedPose);
 
     _world = std::make_shared<World>();
+    _world->setName("biped world");
     _world->setGravity(Eigen::Vector3d(0.0, -9.81, 0.0));
 
-    // auto keys = dart::collision::BulletCollisionDetector::getFactory()->getKeys();
-    // for(auto k : keys)
-    //   std::cout << k << std::endl;
 
-    // if (dart::collision::BulletCollisionDetector::getFactory()->canCreate("dart"))
-    // {
-        _world->getConstraintSolver()->setCollisionDetector(
-                    dart::collision::BulletCollisionDetector::create());
-    // }
+    dart_constr::BoxedLcpSolverPtr lcp_solver(new dart_constr::DantzigBoxedLcpSolver);
+    dart_constr::PgsBoxedLcpSolverPtr pgs_solver(new dart_constr::PgsBoxedLcpSolver);
+    std::unique_ptr<dart_constr::ConstraintSolver> constr_solver(new dart_constr::BoxedLcpConstraintSolver(lcp_solver,pgs_solver));
+
+    _world->setConstraintSolver(std::move(constr_solver));
+
+    _world->getConstraintSolver()->setCollisionDetector(
+                    dart::collision::DARTCollisionDetector::create());
+    
 
 
     _world->addSkeleton(floor);
@@ -242,6 +245,9 @@ Simulation::Simulation(Joint::ActuatorType at, const std::string &model_path)
     _controller = std::make_unique<Controller>(biped,at);
 
     _set_self_collision<Params>();
+    if(_self_collision)
+      std::cout << "SELF COLLISION ENABLED" << std::endl;
+    else std::cout << "SELF COLLISION DISABLED" << std::endl;
 
 }
 
@@ -306,7 +312,6 @@ void Simulation::update(int time_idx)
 
 //        --_force_count_down;
 //    }
-
     _world->step();
 
     // If we have a viewer (visualization mode), update it
@@ -341,8 +346,10 @@ SkeletonPtr Simulation::_loadBiped(const std::string& model_path)
     biped->getJoint(i)->setPositionLimitEnforced(true);
 
   // Enable self collision check but ignore adjacent bodies
-  biped->enableSelfCollisionCheck();
-  biped->disableAdjacentBodyCheck();
+  if(_self_collision){
+    biped->enableSelfCollisionCheck();
+    biped->disableAdjacentBodyCheck();
+  }
 
   return biped;
 }

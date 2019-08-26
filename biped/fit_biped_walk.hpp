@@ -12,7 +12,7 @@ namespace sf = sferes;
 SFERES_FITNESS(FitBipedWalk,sf::fit::Fitness){
     public:
     FitBipedWalk(){
-        _simu.reset(new biped::Simulation(biped::Params::biped::actuactor_type,biped::Params::simu::model_path()));
+        _simu.reset(new biped::Simulation(biped::Params::biped::actuator_type,biped::Params::simu::model_path()));
     }
 
     template<typename Indiv>
@@ -39,8 +39,11 @@ SFERES_FITNESS(FitBipedWalk,sf::fit::Fitness){
 
             if(pos_bd.size() < biped::Params::novelty::nb_pos
                     && i > 0
-                    && (i%(int)std::round(biped::Params::simu::nb_steps/biped::Params::novelty::nb_pos)==0))
-                pos_bd.push_back(_simu->_controller->get_biped()->getBodyNode("h_pelvis")->getWorldTransform().matrix().col(3));
+                    && (i%(int)std::round(biped::Params::simu::nb_steps/biped::Params::novelty::nb_pos)==0)){
+                        if(!std::isnan(_simu->_controller->get_biped()->getBodyNode("h_pelvis")->getWorldTransform().matrix().col(3)(0)))
+                            pos_bd.push_back(_simu->_controller->get_biped()->getBodyNode("h_pelvis")->getWorldTransform().matrix().col(3));
+                        else pos_bd.push_back(Eigen::VectorXd::Zero(3));
+                    }
 
             step_check(ind.nn());
 
@@ -50,8 +53,12 @@ SFERES_FITNESS(FitBipedWalk,sf::fit::Fitness){
 
             i++;
         }
-
-        pos_bd.push_back(_simu->_controller->get_biped()->getBodyNode("h_pelvis")->getWorldTransform().matrix().col(3));
+        if(!std::isnan(_simu->_controller->get_biped()->getBodyNode("h_pelvis")->getWorldTransform().matrix().col(3)(0)))
+            pos_bd.push_back(_simu->_controller->get_biped()->getBodyNode("h_pelvis")->getWorldTransform().matrix().col(3));
+        else pos_bd.push_back(Eigen::VectorXd::Zero(3));
+        std::cout << "POS BD :" << std::endl;
+        for(auto pos : pos_bd)
+            std::cout << pos << std::endl;
     }
 
     template<typename Indiv>
@@ -59,7 +66,10 @@ SFERES_FITNESS(FitBipedWalk,sf::fit::Fitness){
         double dist = 0;
         double delta;
         for(size_t i = 0; i < pos_bd.size(); i++){
+            if(ind.fit().pos_bd[i].rows() < pos_bd[i].rows())
+                return 0;
             for(int j = 0; j < pos_bd[i].rows(); j++){
+
                 delta = pos_bd[i](j) - ind.fit().pos_bd[i](j);
                 dist += delta*delta;
             }

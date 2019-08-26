@@ -39,8 +39,8 @@
 
 #include <dart/dart.hpp>
 #include <dart/utils/utils.hpp>
-#include <dart/collision/bullet/BulletCollisionDetector.hpp>
-
+#include <dart/collision/dart/DARTCollisionDetector.hpp>
+#include <dart/constraint/ConstraintSolver.hpp>
 
 #ifdef VISU
 #include <dart/gui/gui.hpp>
@@ -145,6 +145,12 @@ public:
 
     void enable_spd(bool b){_spd_enabled = b;}
     void enable_ankle_strat(bool b){_ankle_strat_enabled = b;}
+    void enable_self_collision(bool b){
+        _self_collision = b;
+        if(_self_collision)
+            std::cout << "SELF COLLISION ENABLED" << std::endl;
+        else std::cout << "SELF COLLISION DISABLED" << std::endl;
+    }
 
     std::unique_ptr<Controller> _controller;
     WorldPtr _world;
@@ -167,8 +173,8 @@ protected:
     WorldNode* _osgWorldNode;
 #endif
 
-    bool _spd_enabled = false;
-    bool _ankle_strat_enabled = false;
+    bool _spd_enabled = true;
+    bool _ankle_strat_enabled = true;
 
     SkeletonPtr _createFloor();
     // Load a biped model and enable joint limits and self-collision
