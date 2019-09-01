@@ -27,7 +27,7 @@ struct Params{
     struct simu{
         static constexpr int nb_steps = 5000;
         SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/biped/biped.skel");
-        static constexpr bool self_collision = false;
+        static constexpr bool self_collision = true;
     };
     struct evo_float {
         static constexpr float mutation_rate = 0.1f;

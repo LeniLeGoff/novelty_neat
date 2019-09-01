@@ -17,7 +17,6 @@ SFERES_FITNESS(FitBipedWalk,sf::fit::Fitness){
 
     template<typename Indiv>
     void eval(Indiv& ind){
-        std::cout << "_-_-_-_-_ New Evalutation _-_-_-_-_-__-" << std::endl;
 
         ind.nn().simplify();
 
@@ -57,9 +56,9 @@ SFERES_FITNESS(FitBipedWalk,sf::fit::Fitness){
         if(!std::isnan(simu._controller->get_biped()->getBodyNode("h_pelvis")->getWorldTransform().matrix().col(3)(0)))
             pos_bd.push_back(simu._controller->get_biped()->getBodyNode("h_pelvis")->getWorldTransform().matrix().col(3));
         else pos_bd.push_back(Eigen::VectorXd::Zero(3));
-        std::cout << "POS BD :" << std::endl;
-        for(auto pos : pos_bd)
-            std::cout << pos << std::endl;
+        // std::cout << "POS BD :" << std::endl;
+        // for(auto pos : pos_bd)
+        //     std::cout << pos << std::endl;
     }
 
     template<typename Indiv>
@@ -137,6 +136,7 @@ SFERES_FITNESS(FitBipedWalk,sf::fit::Fitness){
                     lower = -5;
                 if(std::isinf(upper_limits(j)))
                     upper = 5;
+
                 outf[i] = nn.get_outf()[i]*(upper - lower) + lower;
                 i++;
             }
