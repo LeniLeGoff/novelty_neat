@@ -136,7 +136,6 @@ SFERES_FITNESS(FitBipedWalk,sf::fit::Fitness){
                     lower = -5;
                 if(std::isinf(upper_limits(j)))
                     upper = 5;
-
                 outf[i] = nn.get_outf()[i]*(upper - lower) + lower;
                 i++;
             }
