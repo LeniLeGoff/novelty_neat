@@ -25,7 +25,7 @@ struct Params{
         static constexpr dart_dyn::Joint::ActuatorType actuator_type = dart_dyn::Joint::VELOCITY;
     };
     struct simu{
-        static constexpr int nb_steps = 5000;
+        static constexpr int nb_steps = 2000;
         SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/biped/biped.skel");
         static constexpr bool self_collision = true;
     };
