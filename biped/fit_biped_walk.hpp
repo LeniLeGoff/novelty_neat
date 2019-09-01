@@ -107,9 +107,10 @@ SFERES_FITNESS(FitBipedWalk,sf::fit::Fitness){
                 if(std::isinf(upper_limits(j)))
                     upper = M_PI;
                 inputs[i] = (feedback(i) - lower)/(upper - lower);
-//                std::cout << "feedback : " << feedback(i) << " ";
-//                std::cout << "input : " << inputs[i] << " ";
-//                std::cout << "limits : lower " << lower_limits(j) << " upper " << upper_limits(j) << std::endl;
+                // inputs[i] = feedback(i);
+                std::cout << "feedback : " << feedback(i) << " ";
+                std::cout << "input : " << inputs[i] << " ";
+                std::cout << "limits : lower " << lower_limits(j) << " upper " << upper_limits(j) << std::endl;
 
                 i++;
             }
@@ -133,19 +134,21 @@ SFERES_FITNESS(FitBipedWalk,sf::fit::Fitness){
                 lower = lower_limits(j);
                 upper = upper_limits(j);
                 if(std::isinf(lower_limits(j)))
-                    lower = -1;
+                    lower = -5;
                 if(std::isinf(upper_limits(j)))
-                    upper = 1;
+                    upper = 5;
                 outf[i] = nn.get_outf()[i]*(upper - lower) + lower;
                 i++;
             }
         }
-//        for(double val : outf)
-//            std::cout << val << " ";
-//        std::cout << std::endl;
+        std::cout << "nn output : ";
+       for(double val : outf)
+           std::cout << val << " ";
+       std::cout << std::endl;
     }
 
     void move_check(biped::Simulation& simu){
+        std::cout << outf.size() << std::endl;
         for(int i = 0; i < outf.size(); i++){
             simu._controller->setCommands(biped::Controller::dof_names[i],outf[i]);
         }
