@@ -75,8 +75,8 @@ struct Params{
     struct pop
     {
         // size of a batch
-        static constexpr size_t size = 20;
-        static constexpr size_t nb_gen = 3;
+        static constexpr size_t size = 400;
+        static constexpr size_t nb_gen = 4001;
         static constexpr float initial_aleat = 1.0f;
         static constexpr size_t dump_period = 50;
     };
