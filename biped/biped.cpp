@@ -288,11 +288,11 @@ void Simulation::update(int time_idx)
 {
     _controller->clearForces();
 
-    if(_spd_enabled)
-        _controller->addSPDForces();
+    // if(_spd_enabled)
+    //     _controller->addSPDForces();
 
-    if(_ankle_strat_enabled)
-        _controller->addAnkleStrategyForces();
+    // if(_ankle_strat_enabled)
+    //     _controller->addAnkleStrategyForces();
 
 
 

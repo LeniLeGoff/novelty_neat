@@ -132,9 +132,9 @@ SFERES_FITNESS(FitBipedWalk,sf::fit::Fitness){
                 lower = lower_limits(j);
                 upper = upper_limits(j);
                 if(std::isinf(lower_limits(j)))
-                    lower = -10;
+                    lower = -5;
                 if(std::isinf(upper_limits(j)))
-                    upper = 10;
+                    upper = 5;
                 outf[i] = nn.get_outf()[i]*(upper - lower) + lower;
                 i++;
             }
