@@ -245,9 +245,9 @@ Simulation::Simulation(Joint::ActuatorType at, const std::string &model_path)
     _controller = std::make_unique<Controller>(biped,at);
 
     _set_self_collision<Params>();
-    if(_self_collision)
-      std::cout << "SELF COLLISION ENABLED" << std::endl;
-    else std::cout << "SELF COLLISION DISABLED" << std::endl;
+    // if(_self_collision)
+    //   std::cout << "SELF COLLISION ENABLED" << std::endl;
+    // else std::cout << "SELF COLLISION DISABLED" << std::endl;
 
 }
 

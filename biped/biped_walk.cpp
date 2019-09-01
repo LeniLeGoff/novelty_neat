@@ -76,5 +76,6 @@ int main(int argc, char** argv){
 
 
     ea_t ea;
+    ea.set_res_dir(biped::Params::ea::log_dir());
     sf::run_ea(argc,argv,ea);
 }

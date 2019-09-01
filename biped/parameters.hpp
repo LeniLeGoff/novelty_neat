@@ -64,6 +64,7 @@ struct Params{
 
         static constexpr size_t behav_dim = 2;
         SFERES_ARRAY(size_t, behav_shape, 256, 256);
+        SFERES_STRING(log_dir,"/data");
 
     };
     struct parameters {
