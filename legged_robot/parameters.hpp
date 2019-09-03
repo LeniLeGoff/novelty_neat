@@ -26,7 +26,7 @@ struct Params{
     };
     struct simu{
         static constexpr int nb_steps = 3000;
-        SFERES_STRING(model_path,"/git/novelty_neat/legged_robot/tripod_1dof.urdf");
+        SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/legged_robot/tripod_1dof.urdf");
         static constexpr bool self_collision = true;
     };
     struct evo_float {
