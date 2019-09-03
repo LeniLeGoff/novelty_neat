@@ -110,9 +110,9 @@ SFERES_FITNESS(FitLeggedRobot,sf::fit::Fitness){
                 if(std::isinf(upper_limits(j)))
                     upper = M_PI;
                 inputs[i] = (feedback(i) - lower)/(upper - lower);
-               // std::cout << "feedback : " << feedback(i) << " ";
-               // std::cout << "input : " << inputs[i] << " ";
-               // std::cout << "limits : lower " << lower_limits(j) << " upper " << upper_limits(j) << std::endl;
+               std::cerr << "feedback : " << feedback(i) << " ";
+               std::cerr << "input : " << inputs[i] << " ";
+               std::cerr << "limits : lower " << lower_limits(j) << " upper " << upper_limits(j) << std::endl;
 
                 i++;
             }
