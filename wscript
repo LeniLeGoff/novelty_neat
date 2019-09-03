@@ -55,36 +55,59 @@ def build(bld):
                             'NOVELTY NB_HIDDEN_16',
                             'VISU'
                             ])
- 
-  bld.program(features = 'cxx',
-                source = 'biped/test-dart.cpp',
-                includes = '../../ /usr/include/ /usr/include/eigen3/ /home/le_goff/libraries/include',
-                uselib = libs + ' DART',
-                target = 'test-dart')
+#BIPED  
+  # bld.program(features = 'cxx',
+  #               source = 'biped/test-dart.cpp',
+  #               includes = '../../ /usr/include/ /usr/include/eigen3/ /home/le_goff/libraries/include',
+  #               uselib = libs + ' DART',
+  #               target = 'test-dart')
 
-  bld.program(features = 'cxx',
-                source = 'biped/test_biped.cpp biped/biped.cpp',
-                includes = '../../ ../../modules /usr/include/ /usr/include/eigen3/ /home/le_goff/libraries/include',
-                uselib = libs + ' DART DART_GRAPHIC',
-                defines = 'VISU',
-                #use = 'sferes2 nn2',
-                target = 'test_biped')
+  # bld.program(features = 'cxx',
+  #               source = 'biped/test_biped.cpp biped/biped.cpp',
+  #               includes = '../../ ../../modules /usr/include/ /usr/include/eigen3/ /home/le_goff/libraries/include',
+  #               uselib = libs + ' DART DART_GRAPHIC',
+  #               defines = 'VISU',
+  #               #use = 'sferes2 nn2',
+  #               target = 'test_biped')
 
+
+  # sferes.create_variants(bld,
+  #                       source = 'biped/biped_walk.cpp biped/biped.cpp',
+  #                       includes = '../../ ../../modules /usr/include/eigen3 /usr/include/ /usr/include/bullet',
+  #                       uselib = libs + ' DART DART_GRAPHIC',
+  #                       use = 'sferes2 nn2', 
+  #                       target = 'biped_walk',
+  #                       variants = [
+  #                           'NOVELTY NEAT VISU',
+  #                           'NOVELTY NEAT',
+  #                           'NOVELTY RNN VISU',
+  #                           'NOVELTY RNN',
+  #                           'NOVELTY VISU',
+  #                           'NOVELTY',
+  #                           'VISU'
+  #                           ])
+
+
+#LEGGED ROBOT
+  bld.program(features = 'cxx',
+              source = 'legged_robot/test_simu.cpp legged_robot/legged_robot.cpp',
+              includes = '../../ ../../modules /usr/include/ /usr/include/eigen3/ /home/le_goff/libraries/include',
+              uselib = libs + ' DART DART_GRAPHIC',
+              defines = 'VISU',
+              target = 'test_simu')
 
   sferes.create_variants(bld,
-                        source = 'biped/biped_walk.cpp biped/biped.cpp',
-                        includes = '../../ ../../modules /usr/include/eigen3 /usr/include/ /usr/include/bullet',
-                        uselib = libs + ' DART DART_GRAPHIC',
-                        use = 'sferes2 nn2', 
-                        target = 'biped_walk',
-                        variants = [
-                            'NOVELTY NEAT VISU',
-                            'NOVELTY NEAT',
-                            'NOVELTY RNN VISU',
-                            'NOVELTY RNN',
-                            'NOVELTY VISU',
-                            'NOVELTY',
-                            'VISU'
-                            ])
-
-
+                      source = 'legged_robot/legged_robot_exp.cpp legged_robot/legged_robot.cpp',
+                      includes = '../../ ../../modules /usr/include/eigen3 /usr/include/ /usr/include/bullet',
+                      uselib = libs + ' DART DART_GRAPHIC',
+                      use = 'sferes2 nn2', 
+                      target = 'legged_robot',
+                      variants = [
+                          'NOVELTY NEAT VISU',
+                          'NOVELTY NEAT',
+                          'NOVELTY RNN VISU',
+                          'NOVELTY RNN',
+                          'NOVELTY VISU',
+                          'NOVELTY',
+                          'VISU'
+                          ])
