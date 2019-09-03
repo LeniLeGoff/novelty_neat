@@ -26,11 +26,7 @@ struct Params{
     };
     struct simu{
         static constexpr int nb_steps = 3000;
-<<<<<<< HEAD
-        SFERES_STRING(model_path,"/home/leni/git/novelty_neat/legged_robot/tripod_1dof.urdf");
-=======
         SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/legged_robot/tripod_1dof.urdf");
->>>>>>> 3f87ac843dd5119dbd2fd73f5d8408bd288a481b
         static constexpr bool self_collision = true;
     };
     struct evo_float {
@@ -68,12 +64,7 @@ struct Params{
 
         static constexpr size_t behav_dim = 2;
         SFERES_ARRAY(size_t, behav_shape, 256, 256);
-<<<<<<< HEAD
-        SFERES_STRING(log_dir,"/home/leni/data");
-=======
         SFERES_STRING(log_dir,"/data");
->>>>>>> 3f87ac843dd5119dbd2fd73f5d8408bd288a481b
-
     };
     struct parameters {
         // maximum value of parameters
