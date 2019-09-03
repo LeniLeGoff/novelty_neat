@@ -185,7 +185,7 @@ void Simulation::update(int time_idx)
 
   try{
     _world->step();
-  }catch(){
+  }catch(int e){
     std::cerr << "Simulation crashed" << std::endl;
     return;
   }
