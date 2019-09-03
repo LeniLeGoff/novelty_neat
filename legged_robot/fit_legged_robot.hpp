@@ -31,7 +31,13 @@ SFERES_FITNESS(FitLeggedRobot,sf::fit::Fitness){
 
 //            std::cout << "eval ... step " << i << std::endl;
 
-            get_inputs(simu);
+            if(!get_inputs(simu)){
+                std::cerr << "Stop simulation because of aberrant behavior" << std::endl;
+                pos_bd.clear();
+                for(int j = 0; j < legged::Params::novelty::nb_pos; j++)
+                    pos_bd.push_back(Eigen::VectorXd::Zero(3));
+                return;
+            }
 
             if(pos_bd.size() < legged::Params::novelty::nb_pos
                     && i > 0
@@ -75,7 +81,7 @@ SFERES_FITNESS(FitLeggedRobot,sf::fit::Fitness){
 
     //TODO functions to convert [lower,upper] <-> [0,1]
 
-    void get_inputs(legged::Simulation& simu){
+    bool get_inputs(legged::Simulation& simu){
         Eigen::VectorXd feedback;
         if(legged::Params::robot::fb_type == legged::feedback_type::POSITION)
             feedback = simu._controller->get_model()->getPositions();
@@ -85,6 +91,8 @@ SFERES_FITNESS(FitLeggedRobot,sf::fit::Fitness){
             feedback = simu._controller->get_model()->getAccelerations();
         else if(legged::Params::robot::fb_type == legged::feedback_type::FORCES)
             feedback = simu._controller->get_model()->getForces();
+
+
 
         inputs.resize(feedback.rows());
         Eigen::VectorXd lower_limits;
@@ -110,6 +118,11 @@ SFERES_FITNESS(FitLeggedRobot,sf::fit::Fitness){
             }
             k++;
         }
+        for(double input : inputs)
+           if(std::isnan(input))
+            return false;
+        return true;
+
     }
 
     template<typename NN>
