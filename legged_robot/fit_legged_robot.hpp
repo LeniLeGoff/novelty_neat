@@ -31,6 +31,7 @@ SFERES_FITNESS(FitLeggedRobot,sf::fit::Fitness){
 
 //            std::cout << "eval ... step " << i << std::endl;
 
+
             if(!get_inputs(simu)){
                 std::cerr << "Stop simulation because of aberrant behavior" << std::endl;
                 pos_bd.clear();
@@ -38,6 +39,7 @@ SFERES_FITNESS(FitLeggedRobot,sf::fit::Fitness){
                     pos_bd.push_back(Eigen::VectorXd::Zero(3));
                 return;
             }
+
 
             if(pos_bd.size() < legged::Params::novelty::nb_pos
                     && i > 0
@@ -81,6 +83,7 @@ SFERES_FITNESS(FitLeggedRobot,sf::fit::Fitness){
 
     //TODO functions to convert [lower,upper] <-> [0,1]
 
+
     bool get_inputs(legged::Simulation& simu){
         Eigen::VectorXd feedback;
         if(legged::Params::robot::fb_type == legged::feedback_type::POSITION)
@@ -91,7 +94,6 @@ SFERES_FITNESS(FitLeggedRobot,sf::fit::Fitness){
             feedback = simu._controller->get_model()->getAccelerations();
         else if(legged::Params::robot::fb_type == legged::feedback_type::FORCES)
             feedback = simu._controller->get_model()->getForces();
-
 
 
         inputs.resize(feedback.rows());
@@ -110,9 +112,9 @@ SFERES_FITNESS(FitLeggedRobot,sf::fit::Fitness){
                 if(std::isinf(upper_limits(j)))
                     upper = M_PI;
                 inputs[i] = (feedback(i) - lower)/(upper - lower);
-               std::cerr << "feedback : " << feedback(i) << " ";
-               std::cerr << "input : " << inputs[i] << " ";
-               std::cerr << "limits : lower " << lower_limits(j) << " upper " << upper_limits(j) << std::endl;
+               // std::cerr << "feedback : " << feedback(i) << " ";
+               // std::cerr << "input : " << inputs[i] << " ";
+               // std::cerr << "limits : lower " << lower_limits(j) << " upper " << upper_limits(j) << std::endl;
 
                 i++;
             }
@@ -122,7 +124,6 @@ SFERES_FITNESS(FitLeggedRobot,sf::fit::Fitness){
            if(std::isnan(input))
             return false;
         return true;
-
     }
 
     template<typename NN>
