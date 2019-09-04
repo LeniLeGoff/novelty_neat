@@ -183,12 +183,7 @@ void Simulation::update(int time_idx)
 {
     // _controller->clearForces();
 
-  try{
     _world->step();
-  }catch(int e){
-    std::cerr << "Simulation crashed" << std::endl;
-    return;
-  }
 
 
 #ifdef VISU

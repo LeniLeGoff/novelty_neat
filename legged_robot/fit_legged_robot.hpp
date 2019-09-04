@@ -136,8 +136,8 @@ SFERES_FITNESS(FitLeggedRobot,sf::fit::Fitness){
         outf.resize(nn.get_outf().size());
         int i = 0;
         for(const std::string &dofname : simu._controller->get_dofs_names()){
-            lower = simu._controller->get_model()->getDof(dofname)->getVelocityLowerLimit();
-            upper = simu._controller->get_model()->getDof(dofname)->getVelocityUpperLimit();
+            lower = -3;//simu._controller->get_model()->getDof(dofname)->getVelocityLowerLimit();
+            upper = 3;//simu._controller->get_model()->getDof(dofname)->getVelocityUpperLimit();
             // std::cout << "upper :" << upper << " lower : " <<  lower << std::endl;
             if(std::isinf(lower))
                 lower = -7;
