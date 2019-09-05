@@ -56,8 +56,35 @@ struct Params{
         static constexpr float eta_c = 15.0f;
     };
     struct dnn {
+#if defined(THREE_LEGS_2DOF)
         static constexpr size_t nb_inputs	= 12;
         static constexpr size_t nb_outputs	= 6;
+#elif defined(THREE_LEGS_3DOF)
+        static constexpr size_t nb_inputs   = 15;
+        static constexpr size_t nb_outputs  = 9;
+#elif defined(THREE_LEGS_4DOF)
+        static constexpr size_t nb_inputs   = 18;
+        static constexpr size_t nb_outputs  = 12;
+#elif defined(FOUR_LEGS_2DOF)
+        static constexpr size_t nb_inputs   = 14;
+        static constexpr size_t nb_outputs  = 8;
+#elif defined(FOUR_LEGS_3DOF)
+        static constexpr size_t nb_inputs   = 18;
+        static constexpr size_t nb_outputs  = 12;
+#elif defined(FOUR_LEGS_4DOF)
+        static constexpr size_t nb_inputs   = 22;
+        static constexpr size_t nb_outputs  = 16;
+#elif defined(SIX_LEGS_2DOF)
+        static constexpr size_t nb_inputs   = 18;
+        static constexpr size_t nb_outputs  = 12;
+#elif defined(SIX_LEGS_4DOF)
+        static constexpr size_t nb_inputs   = 30;
+        static constexpr size_t nb_outputs  = 24;
+#else         
+        static constexpr size_t nb_inputs   = 24;
+        static constexpr size_t nb_outputs  = 18;
+#endif
+
         static constexpr size_t min_nb_neurons	= 0;
         static constexpr size_t max_nb_neurons	= 30;
         static constexpr size_t min_nb_conns	= 8;
