@@ -86,9 +86,9 @@ struct Params{
 #endif
 
         static constexpr size_t min_nb_neurons	= 0;
-        static constexpr size_t max_nb_neurons	= 30;
+        static constexpr size_t max_nb_neurons	= 80;
         static constexpr size_t min_nb_conns	= 8;
-        static constexpr size_t max_nb_conns	= 250;
+        static constexpr size_t max_nb_conns	= 20000;
 
         static constexpr float m_rate_add_conn	= 0.1f;
         static constexpr float m_rate_del_conn	= 0.01f;
