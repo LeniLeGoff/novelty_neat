@@ -27,6 +27,7 @@
 #include "../phen_static_nn.hpp"
 #include "../phen_static_rnn.hpp"
 #include "stat_bd.hpp"
+#include "stat_neat.hpp"
 
 
 namespace sf = sferes;
@@ -68,7 +69,11 @@ int main(int argc, char** argv){
     // STATS
     typedef boost::fusion::vector<
             sf::stat::ParetoFront<phen_t, legged::Params>,
-            sf::stat::BD<phen_t,legged::Params>>  stat_t;
+            sf::stat::BD<phen_t,legged::Params>
+#ifdef NEAT
+            ,sf::stat::Neat<phen_t,legged::Params>
+#endif
+            >  stat_t;
             //      sf::stat::Traj<phen_t, Params>
 
     typedef sf::ea::Nsga2<phen_t, eval_t, stat_t, modifier_t, legged::Params> ea_t;

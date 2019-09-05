@@ -1,5 +1,5 @@
-#ifndef BIPED_PARAMETERS_HPP
-#define BIPED_PARAMETERS_HPP
+#ifndef LEGGED_PARAMETERS_HPP
+#define LEGGED_PARAMETERS_HPP
 
 #include <sferes/stc.hpp>
 #include <sferes/gen/evo_float.hpp>
@@ -26,7 +26,25 @@ struct Params{
     };
     struct simu{
         static constexpr int nb_steps = 3000;
-        SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/legged_robot/tripod_1dof.urdf");
+#if defined(THREE_LEGS_2DOF)
+        SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/legged_robot/tripod_2dof.urdf");
+#elif defined(THREE_LEGS_3DOF)
+        SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/legged_robot/tripod_3dof.urdf");
+#elif defined(THREE_LEGS_4DOF)
+        SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/legged_robot/tripod_4dof.urdf");
+#elif defined(FOuR_LEGS_2DOF)
+        SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/legged_robot/quadpod_2dof.urdf");
+#elif defined(FOUR_LEGS_3DOF)
+        SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/legged_robot/quadpod_3dof.urdf");
+#elif defined(FOUR_LEGS_4DOF)
+        SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/legged_robot/quadpod_4dof.urdf");
+#elif defined(SIX_LEGS_2DOF)
+        SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/legged_robot/hexapod_2dof.urdf");
+#elif defined(SIX_LEGS_4DOF)
+        SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/legged_robot/hexapod_4dof.urdf");
+#else
+        SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/legged_robot/tripod_3dof.urdf");
+#endif
         static constexpr bool self_collision = true;
     };
     struct evo_float {
@@ -55,7 +73,19 @@ struct Params{
         static constexpr sf::gen::dnn::init_t init = sf::gen::dnn::ff;
     };
     struct static_nn{
+#if defined(NB_HIDDEN_0)
+        static constexpr size_t nb_hidden = 0;
+#elif defined(NB_HIDDEN_2)
+        static constexpr size_t nb_hidden = 2;
+#elif defined(NB_HIDDEN_4)
+        static constexpr size_t nb_hidden = 4;
+#elif defined(NB_HIDDEN_8)
+        static constexpr size_t nb_hidden = 8;
+#elif defined(NB_HIDDEN_16)
+        static constexpr size_t nb_hidden = 16;
+#else
         static constexpr size_t nb_hidden = 5;
+#endif
     };
     struct ea
     {
@@ -90,5 +120,5 @@ struct Params{
     };
 };
 
-}//biped
-#endif //BIPED_PARAMETERS_HPP
+}//legged
+#endif //LEGGED_PARAMETERS_HPP

@@ -11,7 +11,7 @@ int main(int argc, char** argv){
 	}
 
 	boost::random::mt19937 gen;
-	boost::random::uniform_real_distribution<> dist(-5,5);
+	boost::random::uniform_real_distribution<> dist(-3,3);
 
 	int nb_step = std::stoi(argv[2]);
 
