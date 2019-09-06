@@ -3,6 +3,7 @@
  */
 
 #include <iostream>
+#include <ctime>
 
 #ifndef VISU
 #include <sferes/eval/parallel.hpp>
@@ -81,6 +82,17 @@ int main(int argc, char** argv){
 
 
     ea_t ea;
-    ea.set_res_dir(legged::Params::ea::log_dir());
+
+    std::time_t present_time = std::time(nullptr);
+    std::tm* date = std::localtime(&present_time);
+    std::stringstream stream;
+    stream << date->tm_mday 
+        << "_" << date->tm_mon
+        << "_" << date->tm_hour 
+        << "-" << date->tm_min 
+        << "-" << date->tm_sec; 
+    
+    ea.set_res_dir(legged::Params::ea::log_dir() + std::string("/") + std::string(argv[0]) + std::string("_") + stream.str());
+    
     sf::run_ea(argc,argv,ea);
 }
