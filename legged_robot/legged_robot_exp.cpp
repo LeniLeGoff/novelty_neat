@@ -84,6 +84,7 @@ int main(int argc, char** argv){
 
     ea_t ea;
 
+    //set logs directory
     std::time_t present_time = std::time(nullptr);
     std::tm* date = std::localtime(&present_time);
     std::stringstream stream;
@@ -97,7 +98,6 @@ int main(int argc, char** argv){
     boost::split(strs,command_line,boost::is_any_of("/"));
     std::string folder = std::string("/") + strs.back() 
                 + std::string("_") + stream.str();
-
     if(!boost::filesystem::exists(legged::Params::ea::log_dir() + folder))
         boost::filesystem::create_directory(legged::Params::ea::log_dir() + folder);
     ea.set_res_dir(legged::Params::ea::log_dir() + folder);
