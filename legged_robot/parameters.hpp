@@ -25,7 +25,11 @@ struct Params{
         static constexpr dart_dyn::Joint::ActuatorType actuator_type = dart_dyn::Joint::SERVO;
     };
     struct simu{
+#if defined(LONG_EVAL)
+        static constexpr int nb_steps = 5000;
+#else
         static constexpr int nb_steps = 3000;
+#endif
 #if defined(THREE_LEGS_2DOF)
         SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/legged_robot/tripod_2dof.urdf");
 #elif defined(THREE_LEGS_3DOF)
@@ -132,8 +136,16 @@ struct Params{
     struct pop
     {
         // size of a batch
+#if defined(LARGE_POP)
+        static constexpr size_t size = 1200;
+#else
         static constexpr size_t size = 400;
+#endif
+#if defined(LONG_RUN)
+        static constexpr size_t nb_gen = 10001;
+#else
         static constexpr size_t nb_gen = 4001;
+#endif
         static constexpr float initial_aleat = 1.0f;
         static constexpr size_t dump_period = 50;
     };

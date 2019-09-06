@@ -104,9 +104,38 @@ def build(bld):
                       target = 'legged_robot',
                       variants = [
                           'NOVELTY NEAT VISU',
+
                           'NOVELTY NEAT THREE_LEGS_2DOF',
                           'NOVELTY NEAT THREE_LEGS_3DOF',
                           'NOVELTY NEAT THREE_LEGS_4DOF',
+
+                          'NOVELTY NEAT THREE_LEGS_2DOF LONG_RUN',
+                          'NOVELTY NEAT THREE_LEGS_3DOF LONG_RUN',
+                          'NOVELTY NEAT THREE_LEGS_4DOF LONG_RUN',
+
+                          'NOVELTY NEAT THREE_LEGS_2DOF LARGE_POP',
+                          'NOVELTY NEAT THREE_LEGS_3DOF LARGE_POP',
+                          'NOVELTY NEAT THREE_LEGS_4DOF LARGE_POP',
+
+                          'NOVELTY NEAT THREE_LEGS_2DOF LONG_EVAL',
+                          'NOVELTY NEAT THREE_LEGS_3DOF LONG_EVAL',
+                          'NOVELTY NEAT THREE_LEGS_4DOF LONG_EVAL',
+
+                          'NOVELTY NEAT THREE_LEGS_2DOF LONG_RUN LONG_EVAL',
+                          'NOVELTY NEAT THREE_LEGS_3DOF LONG_RUN LONG_EVAL',
+                          'NOVELTY NEAT THREE_LEGS_4DOF LONG_RUN LONG_EVAL',
+
+                          'NOVELTY NEAT THREE_LEGS_2DOF LONG_RUN LARGE_POP',
+                          'NOVELTY NEAT THREE_LEGS_3DOF LONG_RUN LARGE_POP',
+                          'NOVELTY NEAT THREE_LEGS_4DOF LONG_RUN LARGE_POP',
+
+                          'NOVELTY NEAT THREE_LEGS_2DOF LARGE_POP LONG_EVAL',
+                          'NOVELTY NEAT THREE_LEGS_3DOF LARGE_POP LONG_EVAL',
+                          'NOVELTY NEAT THREE_LEGS_4DOF LARGE_POP LONG_EVAL',
+
+                          'NOVELTY NEAT THREE_LEGS_2DOF LONG_RUN LONG_EVAL LARGE_POP',
+                          'NOVELTY NEAT THREE_LEGS_3DOF LONG_RUN LONG_EVAL LARGE_POP',
+                          'NOVELTY NEAT THREE_LEGS_4DOF LONG_RUN LONG_EVAL LARGE_POP',
                           # 'NOVELTY NEAT FOUR_LEGS_2DOF',
                           # 'NOVELTY NEAT FOUR_LEGS_3DOF',
                           # 'NOVELTY NEAT FOUR_LEGS_4DOF',
@@ -114,27 +143,27 @@ def build(bld):
                           # 'NOVELTY NEAT ', #HEXAPOD 3DOF
                           # 'NOVELTY NEAT SIX_LEGS_4DOF',
 
-                          'NOVELTY RNN VISU',
-                          'NOVELTY RNN NB_HIDDEN_0', #HEXAPOD 3DOF
-                          'NOVELTY RNN NB_HIDDEN_2', #HEXAPOD 3DOF
-                          'NOVELTY RNN NB_HIDDEN_4', #HEXAPOD 3DOF
-                          'NOVELTY RNN NB_HIDDEN_8', #HEXAPOD 3DOF
-                          'NOVELTY RNN NB_HIDDEN_16', #HEXAPOD 3DOF
-                          'NOVELTY RNN THREE_LEGS_2DOF NB_HIDDEN_0',
-                          'NOVELTY RNN THREE_LEGS_2DOF NB_HIDDEN_2',
-                          'NOVELTY RNN THREE_LEGS_2DOF NB_HIDDEN_4',
-                          'NOVELTY RNN THREE_LEGS_2DOF NB_HIDDEN_8',
-                          'NOVELTY RNN THREE_LEGS_2DOF NB_HIDDEN_16',
-                          'NOVELTY RNN THREE_LEGS_3DOF NB_HIDDEN_0',
-                          'NOVELTY RNN THREE_LEGS_3DOF NB_HIDDEN_2',
-                          'NOVELTY RNN THREE_LEGS_3DOF NB_HIDDEN_4',
-                          'NOVELTY RNN THREE_LEGS_3DOF NB_HIDDEN_8',
-                          'NOVELTY RNN THREE_LEGS_3DOF NB_HIDDEN_16',
-                          'NOVELTY RNN THREE_LEGS_4DOF NB_HIDDEN_0',
-                          'NOVELTY RNN THREE_LEGS_4DOF NB_HIDDEN_2',
-                          'NOVELTY RNN THREE_LEGS_4DOF NB_HIDDEN_4',
-                          'NOVELTY RNN THREE_LEGS_4DOF NB_HIDDEN_8',
-                          'NOVELTY RNN THREE_LEGS_4DOF NB_HIDDEN_16',
+                          # 'NOVELTY RNN VISU',
+                          # 'NOVELTY RNN NB_HIDDEN_0', #HEXAPOD 3DOF
+                          # 'NOVELTY RNN NB_HIDDEN_2', #HEXAPOD 3DOF
+                          # 'NOVELTY RNN NB_HIDDEN_4', #HEXAPOD 3DOF
+                          # 'NOVELTY RNN NB_HIDDEN_8', #HEXAPOD 3DOF
+                          # 'NOVELTY RNN NB_HIDDEN_16', #HEXAPOD 3DOF
+                          # 'NOVELTY RNN THREE_LEGS_2DOF NB_HIDDEN_0',
+                          # 'NOVELTY RNN THREE_LEGS_2DOF NB_HIDDEN_2',
+                          # 'NOVELTY RNN THREE_LEGS_2DOF NB_HIDDEN_4',
+                          # 'NOVELTY RNN THREE_LEGS_2DOF NB_HIDDEN_8',
+                          # 'NOVELTY RNN THREE_LEGS_2DOF NB_HIDDEN_16',
+                          # 'NOVELTY RNN THREE_LEGS_3DOF NB_HIDDEN_0',
+                          # 'NOVELTY RNN THREE_LEGS_3DOF NB_HIDDEN_2',
+                          # 'NOVELTY RNN THREE_LEGS_3DOF NB_HIDDEN_4',
+                          # 'NOVELTY RNN THREE_LEGS_3DOF NB_HIDDEN_8',
+                          # 'NOVELTY RNN THREE_LEGS_3DOF NB_HIDDEN_16',
+                          # 'NOVELTY RNN THREE_LEGS_4DOF NB_HIDDEN_0',
+                          # 'NOVELTY RNN THREE_LEGS_4DOF NB_HIDDEN_2',
+                          # 'NOVELTY RNN THREE_LEGS_4DOF NB_HIDDEN_4',
+                          # 'NOVELTY RNN THREE_LEGS_4DOF NB_HIDDEN_8',
+                          # 'NOVELTY RNN THREE_LEGS_4DOF NB_HIDDEN_16',
                           # 'NOVELTY RNN FOUR_LEGS_2DOF NB_HIDDEN_0',
                           # 'NOVELTY RNN FOUR_LEGS_2DOF NB_HIDDEN_2',
                           # 'NOVELTY RNN FOUR_LEGS_2DOF NB_HIDDEN_4',
@@ -166,22 +195,22 @@ def build(bld):
                           # 'NOVELTY NB_HIDDEN_2', #HEXAPOD 3DOF
                           # 'NOVELTY NB_HIDDEN_4', #HEXAPOD 3DOF
                           # 'NOVELTY NB_HIDDEN_8', #HEXAPOD 3DOF
-                          # 'NOVELTY NB_HIDDEN_16', #HEXAPOD 3DOF 
-                          'NOVELTY THREE_LEGS_2DOF NB_HIDDEN_0',
-                          'NOVELTY THREE_LEGS_2DOF NB_HIDDEN_2',
-                          'NOVELTY THREE_LEGS_2DOF NB_HIDDEN_4',
-                          'NOVELTY THREE_LEGS_2DOF NB_HIDDEN_8',
-                          'NOVELTY THREE_LEGS_2DOF NB_HIDDEN_16',
-                          'NOVELTY THREE_LEGS_3DOF NB_HIDDEN_0',
-                          'NOVELTY THREE_LEGS_3DOF NB_HIDDEN_2',
-                          'NOVELTY THREE_LEGS_3DOF NB_HIDDEN_4',
-                          'NOVELTY THREE_LEGS_3DOF NB_HIDDEN_8',
-                          'NOVELTY THREE_LEGS_3DOF NB_HIDDEN_16',
-                          'NOVELTY THREE_LEGS_4DOF NB_HIDDEN_0',
-                          'NOVELTY THREE_LEGS_4DOF NB_HIDDEN_2',
-                          'NOVELTY THREE_LEGS_4DOF NB_HIDDEN_4',
-                          'NOVELTY THREE_LEGS_4DOF NB_HIDDEN_8',
-                          'NOVELTY THREE_LEGS_4DOF NB_HIDDEN_16',
+                          # # 'NOVELTY NB_HIDDEN_16', #HEXAPOD 3DOF 
+                          # 'NOVELTY THREE_LEGS_2DOF NB_HIDDEN_0',
+                          # 'NOVELTY THREE_LEGS_2DOF NB_HIDDEN_2',
+                          # 'NOVELTY THREE_LEGS_2DOF NB_HIDDEN_4',
+                          # 'NOVELTY THREE_LEGS_2DOF NB_HIDDEN_8',
+                          # 'NOVELTY THREE_LEGS_2DOF NB_HIDDEN_16',
+                          # 'NOVELTY THREE_LEGS_3DOF NB_HIDDEN_0',
+                          # 'NOVELTY THREE_LEGS_3DOF NB_HIDDEN_2',
+                          # 'NOVELTY THREE_LEGS_3DOF NB_HIDDEN_4',
+                          # 'NOVELTY THREE_LEGS_3DOF NB_HIDDEN_8',
+                          # 'NOVELTY THREE_LEGS_3DOF NB_HIDDEN_16',
+                          # 'NOVELTY THREE_LEGS_4DOF NB_HIDDEN_0',
+                          # 'NOVELTY THREE_LEGS_4DOF NB_HIDDEN_2',
+                          # 'NOVELTY THREE_LEGS_4DOF NB_HIDDEN_4',
+                          # 'NOVELTY THREE_LEGS_4DOF NB_HIDDEN_8',
+                          # 'NOVELTY THREE_LEGS_4DOF NB_HIDDEN_16',
                           # 'NOVELTY FOUR_LEGS_2DOF NB_HIDDEN_0',
                           # 'NOVELTY FOUR_LEGS_2DOF NB_HIDDEN_2',
                           # 'NOVELTY FOUR_LEGS_2DOF NB_HIDDEN_4',
