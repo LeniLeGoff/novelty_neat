@@ -90,9 +90,13 @@ int main(int argc, char** argv){
         << "_" << date->tm_mon
         << "_" << date->tm_hour 
         << "-" << date->tm_min 
-        << "-" << date->tm_sec; 
-    
-    ea.set_res_dir(legged::Params::ea::log_dir() + std::string("/") + std::string(argv[0]) + std::string("_") + stream.str());
+        << "-" << date->tm_sec;
+    std::string folder = std::string("/") + std::string(argv[0]) 
+                + std::string("_") + stream.str();
+
+    if(!boost::filesystem::exists(legged::Params::ea::log_dir() + folder))
+        boost::filesystem::create_directory(legged::Params::ea::log_dir() + folder);
+    ea.set_res_dir(legged::Params::ea::log_dir() + folder);
     
     sf::run_ea(argc,argv,ea);
 }
