@@ -3,7 +3,7 @@
 import subprocess as sp
 
 def launch(cmd) :
-  process = sp.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+  process = sp.Popen(cmd, shell=True, stdout=sp.PIPE)
   process.wait()
   print(cmd,process.returncode)
 
