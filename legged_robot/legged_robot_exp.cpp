@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <ctime>
+#include <boost/algorithm/string.hpp>
 
 #ifndef VISU
 #include <sferes/eval/parallel.hpp>
@@ -91,7 +92,10 @@ int main(int argc, char** argv){
         << "_" << date->tm_hour 
         << "-" << date->tm_min 
         << "-" << date->tm_sec;
-    std::string folder = std::string("/") + std::string(argv[0]) 
+    std::string command_line = std::string(argv[0]);
+    std::vector<std::string> strs;
+    boost::split(strs,command_line,boost::is_any_of("/"));
+    std::string folder = std::string("/") + strs.back() 
                 + std::string("_") + stream.str();
 
     if(!boost::filesystem::exists(legged::Params::ea::log_dir() + folder))
