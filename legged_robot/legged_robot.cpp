@@ -227,25 +227,38 @@ SkeletonPtr Simulation::_load_model(const std::string& model_path)
 
 SkeletonPtr Simulation::_create_environment()
 {
-  SkeletonPtr floor = Skeleton::create("floor");
+  SkeletonPtr env = Skeleton::create("environment");
 
-  // Give the floor a body
-  BodyNodePtr body =
-      floor->createJointAndBodyNodePair<WeldJoint>(nullptr).second;
+  //create floor
+  BodyNodePtr floor =
+      env->createJointAndBodyNodePair<WeldJoint>(nullptr).second;
 
-  // Give the body a shape
   double floor_width = 10.0;
   double floor_height = 0.01;
   std::shared_ptr<BoxShape> box(
       new BoxShape(Eigen::Vector3d(floor_width, floor_height, floor_width)));
-  auto shapeNode
-      = body->createShapeNodeWith<VisualAspect, CollisionAspect, DynamicsAspect>(box);
-  shapeNode->getVisualAspect()->setColor(dart::Color::Black());
+  auto floorShape
+      = floor->createShapeNodeWith<VisualAspect, CollisionAspect, DynamicsAspect>(box);
+  floorShape->getVisualAspect()->setColor(dart::Color::Black());
 
-  // Put the body into position
   Eigen::Isometry3d tf(Eigen::Isometry3d::Identity());
   tf.translation() = Eigen::Vector3d(0.0, -1.0, 0.0);
-  body->getParentJoint()->setTransformFromParentBodyNode(tf);
+  floor->getParentJoint()->setTransformFromParentBodyNode(tf);
 
+
+  //create walls
+  BodyNodePtr wall1 =
+      env->createJointAndBodyNodePair<WeldJoint>(nullptr).second;
+
+  double wall_width = 10;
+  double wall_height = 3;
+  double wall_thick = 0.01;
+  std::shared_ptr<BoxShape> box(
+      new BoxShape(Eigen::Vector3d(wall_width, wall_height, wall_thick)));
+
+
+
+  auto wallShape
+    = 
   return floor;
 }
