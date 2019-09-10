@@ -169,7 +169,7 @@ protected:
 #endif
 
 
-    SkeletonPtr _createFloor();
+    SkeletonPtr _create_environment();
     // Load a biped model and enable joint limits and self-collision
     SkeletonPtr _load_model(const std::string &model_path);
 

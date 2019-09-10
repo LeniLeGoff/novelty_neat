@@ -116,7 +116,7 @@ Simulation::Simulation(Joint::ActuatorType at, const std::string &model_path)
 
 
     SkeletonPtr robot_model = _load_model(model_path);
-    SkeletonPtr floor = _createFloor();
+    SkeletonPtr floor = _create_environment();
 
     _world = std::make_shared<World>();
     _world->setName("legged robot world");
@@ -225,7 +225,7 @@ SkeletonPtr Simulation::_load_model(const std::string& model_path)
   return robot;
 }
 
-SkeletonPtr Simulation::_createFloor()
+SkeletonPtr Simulation::_create_environment()
 {
   SkeletonPtr floor = Skeleton::create("floor");
 
