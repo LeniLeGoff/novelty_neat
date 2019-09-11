@@ -106,35 +106,35 @@ def build(bld):
                           'NOVELTY NEAT VISU',
 
                           # 'NOVELTY NEAT THREE_LEGS_2DOF',
-                          'NOVELTY NEAT THREE_LEGS_3DOF',
+                          # 'NOVELTY NEAT THREE_LEGS_3DOF',
                           # 'NOVELTY NEAT THREE_LEGS_4DOF',
 
                           # 'NOVELTY NEAT THREE_LEGS_2DOF LONG_RUN',
-                          'NOVELTY NEAT THREE_LEGS_3DOF LONG_RUN',
+                          # 'NOVELTY NEAT THREE_LEGS_3DOF LONG_RUN',
                           # 'NOVELTY NEAT THREE_LEGS_4DOF LONG_RUN',
 
                           # 'NOVELTY NEAT THREE_LEGS_2DOF LARGE_POP',
-                          'NOVELTY NEAT THREE_LEGS_3DOF LARGE_POP',
+                          # 'NOVELTY NEAT THREE_LEGS_3DOF LARGE_POP',
                           # 'NOVELTY NEAT THREE_LEGS_4DOF LARGE_POP',
 
-                          # 'NOVELTY NEAT THREE_LEGS_2DOF LONG_EVAL',
+                          'NOVELTY NEAT THREE_LEGS_2DOF LONG_EVAL',
                           'NOVELTY NEAT THREE_LEGS_3DOF LONG_EVAL',
-                          # 'NOVELTY NEAT THREE_LEGS_4DOF LONG_EVAL',
+                          'NOVELTY NEAT THREE_LEGS_4DOF LONG_EVAL',
 
                           # 'NOVELTY NEAT THREE_LEGS_2DOF LONG_RUN LONG_EVAL',
-                          'NOVELTY NEAT THREE_LEGS_3DOF LONG_RUN LONG_EVAL',
+                          # 'NOVELTY NEAT THREE_LEGS_3DOF LONG_RUN LONG_EVAL',
                           # 'NOVELTY NEAT THREE_LEGS_4DOF LONG_RUN LONG_EVAL',
 
                           # 'NOVELTY NEAT THREE_LEGS_2DOF LONG_RUN LARGE_POP',
-                          'NOVELTY NEAT THREE_LEGS_3DOF LONG_RUN LARGE_POP',
+                          # 'NOVELTY NEAT THREE_LEGS_3DOF LONG_RUN LARGE_POP',
                           # 'NOVELTY NEAT THREE_LEGS_4DOF LONG_RUN LARGE_POP',
 
                           # 'NOVELTY NEAT THREE_LEGS_2DOF LARGE_POP LONG_EVAL',
-                          'NOVELTY NEAT THREE_LEGS_3DOF LARGE_POP LONG_EVAL',
+                          # 'NOVELTY NEAT THREE_LEGS_3DOF LARGE_POP LONG_EVAL',
                           # 'NOVELTY NEAT THREE_LEGS_4DOF LARGE_POP LONG_EVAL',
 
                           # 'NOVELTY NEAT THREE_LEGS_2DOF LONG_RUN LONG_EVAL LARGE_POP',
-                          'NOVELTY NEAT THREE_LEGS_3DOF LONG_RUN LONG_EVAL LARGE_POP',
+                          # 'NOVELTY NEAT THREE_LEGS_3DOF LONG_RUN LONG_EVAL LARGE_POP',
                           # 'NOVELTY NEAT THREE_LEGS_4DOF LONG_RUN LONG_EVAL LARGE_POP',
                           # 'NOVELTY NEAT FOUR_LEGS_2DOF',
                           # 'NOVELTY NEAT FOUR_LEGS_3DOF',
