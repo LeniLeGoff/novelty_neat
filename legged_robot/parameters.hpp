@@ -45,9 +45,9 @@ struct Params{
 #elif defined(SIX_LEGS_2DOF)
         SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/legged_robot/hexapod_2dof.urdf");
 #elif defined(SIX_LEGS_4DOF)
-        SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/legged_robot/hexapod_4dof.urdf");
+        SFERES_STRING(model_path,"/git/sferes2/expgit/novelty_neat/legged_robot/hexapod_4dof.urdf");
 #else
-        SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/legged_robot/tripod_3dof.urdf");
+        SFERES_STRING(model_path,"/git/sferes2/expnovelty_neat/legged_robot/tripod_3dof.urdf");
 #endif
         static constexpr bool self_collision = true;
         static constexpr double time_step = 0.01;
