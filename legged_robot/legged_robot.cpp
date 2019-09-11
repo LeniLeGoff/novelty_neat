@@ -116,7 +116,7 @@ Simulation::Simulation(Joint::ActuatorType at, const std::string &model_path)
 
 
     SkeletonPtr robot_model = _load_model(model_path);
-    SkeletonPtr floor = _create_environment();
+    SkeletonPtr arena = _create_environment();
 
     _world = std::make_shared<World>();
     _world->setName("legged robot world");
@@ -135,7 +135,7 @@ Simulation::Simulation(Joint::ActuatorType at, const std::string &model_path)
     
 
 
-    _world->addSkeleton(floor);
+    _world->addSkeleton(arena);
     _world->addSkeleton(robot_model);
 
     _controller = std::make_unique<Controller>(robot_model,at);
@@ -228,7 +228,7 @@ SkeletonPtr Simulation::_load_model(const std::string& model_path)
 
 SkeletonPtr Simulation::_create_environment()
 {
-  SkeletonPtr env = Skeleton::create("environment");
+  SkeletonPtr env = Skeleton::create("arena");
 
   //create floor
   BodyNodePtr floor =
@@ -248,14 +248,19 @@ SkeletonPtr Simulation::_create_environment()
 
 
   //create walls
+  WeldJoint::Properties joint_prop;
+  joint_prop.mName = "wall1_joint";
   BodyNodePtr wall1 =
-      env->createJointAndBodyNodePair<WeldJoint>(floor).second;
+      env->createJointAndBodyNodePair<WeldJoint>(floor,joint_prop,BodyNode::AspectProperties("wall1")).second;
+  joint_prop.mName = "wall2_joint";
   BodyNodePtr wall2 =
-      env->createJointAndBodyNodePair<WeldJoint>(floor).second;
+      env->createJointAndBodyNodePair<WeldJoint>(floor,joint_prop,BodyNode::AspectProperties("wall2")).second;
+  joint_prop.mName = "wall3_joint";
   BodyNodePtr wall3 =
-      env->createJointAndBodyNodePair<WeldJoint>(floor).second;
+      env->createJointAndBodyNodePair<WeldJoint>(floor,joint_prop,BodyNode::AspectProperties("wall3")).second;
+  joint_prop.mName = "wall4_joint";
   BodyNodePtr wall4 =
-      env->createJointAndBodyNodePair<WeldJoint>(floor).second;
+      env->createJointAndBodyNodePair<WeldJoint>(floor,joint_prop,BodyNode::AspectProperties("wall4")).second;
 
   double wall_width = 10;
   double wall_height = 3;
