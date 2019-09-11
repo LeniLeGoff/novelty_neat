@@ -121,6 +121,7 @@ Simulation::Simulation(Joint::ActuatorType at, const std::string &model_path)
     _world = std::make_shared<World>();
     _world->setName("legged robot world");
     _world->setGravity(Eigen::Vector3d(0.0, -9.81, 0.0));
+    // _world->setTimeStep(1000000.0);
 
 
     dart_constr::BoxedLcpSolverPtr lcp_solver(new dart_constr::DantzigBoxedLcpSolver);
@@ -235,10 +236,10 @@ SkeletonPtr Simulation::_create_environment()
 
   double floor_width = 10.0;
   double floor_height = 0.01;
-  std::shared_ptr<BoxShape> box(
+  std::shared_ptr<BoxShape> floorBox(
       new BoxShape(Eigen::Vector3d(floor_width, floor_height, floor_width)));
   auto floorShape
-      = floor->createShapeNodeWith<VisualAspect, CollisionAspect, DynamicsAspect>(box);
+      = floor->createShapeNodeWith<VisualAspect, CollisionAspect, DynamicsAspect>(floorBox);
   floorShape->getVisualAspect()->setColor(dart::Color::Black());
 
   Eigen::Isometry3d tf(Eigen::Isometry3d::Identity());
@@ -248,17 +249,52 @@ SkeletonPtr Simulation::_create_environment()
 
   //create walls
   BodyNodePtr wall1 =
-      env->createJointAndBodyNodePair<WeldJoint>(nullptr).second;
+      env->createJointAndBodyNodePair<WeldJoint>(floor).second;
+  BodyNodePtr wall2 =
+      env->createJointAndBodyNodePair<WeldJoint>(floor).second;
+  BodyNodePtr wall3 =
+      env->createJointAndBodyNodePair<WeldJoint>(floor).second;
+  BodyNodePtr wall4 =
+      env->createJointAndBodyNodePair<WeldJoint>(floor).second;
 
   double wall_width = 10;
   double wall_height = 3;
   double wall_thick = 0.01;
-  std::shared_ptr<BoxShape> box(
+  std::shared_ptr<BoxShape> wallBox(
       new BoxShape(Eigen::Vector3d(wall_width, wall_height, wall_thick)));
 
+  auto wall1Shape
+    = wall1->createShapeNodeWith<VisualAspect, CollisionAspect, DynamicsAspect>(wallBox);
+  wall1Shape->getVisualAspect()->setColor(dart::Color::White());
+  auto wall2Shape
+    = wall2->createShapeNodeWith<VisualAspect, CollisionAspect, DynamicsAspect>(wallBox); 
+  wall2Shape->getVisualAspect()->setColor(dart::Color::White());
+  auto wall3Shape
+    = wall3->createShapeNodeWith<VisualAspect, CollisionAspect, DynamicsAspect>(wallBox);
+  wall3Shape->getVisualAspect()->setColor(dart::Color::White());
+  auto wall4Shape
+    = wall4->createShapeNodeWith<VisualAspect, CollisionAspect, DynamicsAspect>(wallBox);
+  wall4Shape->getVisualAspect()->setColor(dart::Color::White());
+
+  Eigen::Isometry3d tf2(Eigen::Isometry3d::Identity());
+  tf2.translation() = Eigen::Vector3d(0.0, 1.5, 5.0);
+  wall1->getParentJoint()->setTransformFromParentBodyNode(tf2);
+
+  Eigen::Isometry3d tf3(Eigen::Isometry3d::Identity());
+  tf3.translation() = Eigen::Vector3d(0.0, 1.5, -5.0);
+  wall2->getParentJoint()->setTransformFromParentBodyNode(tf3);
 
 
-  auto wallShape
-    = 
-  return floor;
+  Eigen::Isometry3d tf4(Eigen::Isometry3d::Identity());
+  tf4.rotate(Eigen::AngleAxisd(0.5*M_PI,Eigen::Vector3d::UnitY())); 
+  tf4.translation() = Eigen::Vector3d(5.0, 1.5, 0.0);
+  wall3->getParentJoint()->setTransformFromParentBodyNode(tf4);
+
+  Eigen::Isometry3d tf5(Eigen::Isometry3d::Identity());
+  tf5.rotate(Eigen::AngleAxisd(0.5*M_PI,Eigen::Vector3d::UnitY()));
+  tf5.translation() = Eigen::Vector3d(-5.0, 1.5, 0.0);
+  wall4->getParentJoint()->setTransformFromParentBodyNode(tf5);
+
+
+  return env;
 }

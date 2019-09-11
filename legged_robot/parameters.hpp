@@ -50,6 +50,7 @@ struct Params{
         SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/legged_robot/tripod_3dof.urdf");
 #endif
         static constexpr bool self_collision = true;
+        static constexpr double time_step = 0.01;
     };
     struct evo_float {
         static constexpr float mutation_rate = 0.1f;
