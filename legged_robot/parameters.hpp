@@ -62,8 +62,8 @@ struct Params{
     };
     struct dnn {
 #if defined(THREE_LEGS_2DOF)
-        static constexpr size_t nb_inputs	= 12;
-        static constexpr size_t nb_outputs	= 6;
+        static constexpr size_t nb_inputs   = 12;
+        static constexpr size_t nb_outputs  = 6;
 #elif defined(THREE_LEGS_3DOF)
         static constexpr size_t nb_inputs   = 15;
         static constexpr size_t nb_outputs  = 9;

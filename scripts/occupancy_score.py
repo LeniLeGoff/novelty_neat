@@ -5,7 +5,7 @@ import os
 import sys
 
 for folder in os.listdir(sys.argv[1]) :
-    if folder.split('_')[0] != "maze" :
+    if folder.split('_')[0] != "maze" and folder.split('_')[0] != "legged" :
         continue
     print(folder)
     if os.path.exists(sys.argv[1] + "/" + folder + "/JSD.dat"):

@@ -17,6 +17,8 @@ def load_data(filename, pos = 0) :
     return pointx, pointy
 
 
+
+
 def convert_to_hist_grid(pointx,pointy,bin = 6) :
     hist = [[0] * bin for _ in range(bin)]
     for i in range(0,len(pointx)) :
