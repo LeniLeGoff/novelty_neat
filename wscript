@@ -117,7 +117,7 @@ def build(bld):
                           # 'NOVELTY NEAT THREE_LEGS_3DOF LARGE_POP',
                           # 'NOVELTY NEAT THREE_LEGS_4DOF LARGE_POP',
 
-                          'NOVELTY NEAT THREE_LEGS_2DOF LONG_EVAL',
+                          'NOVELTY NEAT THREE_LEGS_2DOF LONG_EVAL RANK',
                           'NOVELTY NEAT THREE_LEGS_3DOF LONG_EVAL',
                           'NOVELTY NEAT THREE_LEGS_4DOF LONG_EVAL',
 

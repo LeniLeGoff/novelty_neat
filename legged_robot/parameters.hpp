@@ -150,6 +150,7 @@ struct Params{
         static constexpr float initial_aleat = 1.0f;
         static constexpr size_t dump_period = 50;
         static constexpr float keep_rate = 1.;
+        static constexpr float coeff = 1.1;
     };
     struct novelty {
         static constexpr int nb_pos = 2;

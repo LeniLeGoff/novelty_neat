@@ -18,7 +18,13 @@
 #include <sferes/modif/novelty.hpp>
 #include <sferes/modif/dummy.hpp>
 #include <sferes/run.hpp>
+
+#ifndef RANK
 #include <sferes/ea/nsga2.hpp>
+#else
+#include <sferes/ea/rank_simple.hpp>
+#endif
+
 #include <sferes/stat/pareto_front.hpp>
 
 #include <nn2/gen_dnn_ff.hpp>
@@ -71,7 +77,9 @@ int main(int argc, char** argv){
 
     // STATS
     typedef boost::fusion::vector<
+#ifndef RANK
             sf::stat::ParetoFront<phen_t, legged::Params>,
+#endif
             sf::stat::BD<phen_t,legged::Params>
 #ifdef NEAT
             ,sf::stat::Neat<phen_t,legged::Params>
@@ -82,7 +90,7 @@ int main(int argc, char** argv){
 #ifndef RANK
     typedef sf::ea::Nsga2<phen_t, eval_t, stat_t, modifier_t, legged::Params> ea_t;
 #else
-    typedef sf::ea::rank_simple<phen_t, eval_t, stat_t, modifier_t, legged::Params> ea_t;
+    typedef sf::ea::RankSimple<phen_t, eval_t, stat_t, modifier_t, legged::Params> ea_t;
 #endif
 
     ea_t ea;
