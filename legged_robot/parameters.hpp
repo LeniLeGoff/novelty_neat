@@ -102,7 +102,7 @@ struct Params{
         static constexpr float m_rate_del_neuron  = 0.01f;
 
         static constexpr int io_param_evolving = true;
-        static constexpr sf::gen::dnn::init_t init = sf::gen::dnn::ff;
+        static constexpr sf::gen::dnn::init_t init = sf::gen::dnn::random_topology;
     };
     struct static_nn{
 #if defined(NB_HIDDEN_0)
@@ -149,6 +149,7 @@ struct Params{
 #endif
         static constexpr float initial_aleat = 1.0f;
         static constexpr size_t dump_period = 50;
+        static constexpr float keep_rate = 1.;
     };
     struct novelty {
         static constexpr int nb_pos = 2;

@@ -1,4 +1,4 @@
-    /*
+/*
  * Created by L.K Le Goff
  */
 
@@ -31,6 +31,7 @@
 #include "stat_bd.hpp"
 #include "stat_neat.hpp"
 
+#define EA_
 
 namespace sf = sferes;
 
@@ -78,9 +79,11 @@ int main(int argc, char** argv){
             >  stat_t;
             //      sf::stat::Traj<phen_t, Params>
 
+#ifndef RANK
     typedef sf::ea::Nsga2<phen_t, eval_t, stat_t, modifier_t, legged::Params> ea_t;
-
-
+#else
+    typedef sf::ea::rank_simple<phen_t, eval_t, stat_t, modifier_t, legged::Params> ea_t;
+#endif
 
     ea_t ea;
 
