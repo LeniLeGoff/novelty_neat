@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include <ctime>
+#include <chrono>
+//#include <ratio>
 #include <boost/algorithm/string.hpp>
 
 #ifndef VISU
@@ -96,6 +98,12 @@ int main(int argc, char** argv){
     ea_t ea;
 
     //set logs directory
+    typedef std::chrono::duration<double,std::milli> milli_sec;
+    std::chrono::time_point<std::chrono::high_resolution_clock,milli_sec> milli = std::chrono::time_point_cast<milli_sec>(std::chrono::high_resolution_clock::now());
+    double time_milli = milli.time_since_epoch().count();
+    time_milli = time_milli/(60.f*60.f*24.f*1000.f);
+    time_milli = time_milli - static_cast<int>(time_milli);
+    time_milli = std::trunc(time_milli*1000000.f);
     std::time_t present_time = std::time(nullptr);
     std::tm* date = std::localtime(&present_time);
     std::stringstream stream;
@@ -103,7 +111,8 @@ int main(int argc, char** argv){
         << "_" << date->tm_mon
         << "_" << date->tm_hour 
         << "-" << date->tm_min 
-        << "-" << date->tm_sec;
+        << "-" << date->tm_sec
+        << "-" << time_milli;
     std::string command_line = std::string(argv[0]);
     std::vector<std::string> strs;
     boost::split(strs,command_line,boost::is_any_of("/"));

@@ -31,23 +31,23 @@ struct Params{
         static constexpr int nb_steps = 3000;
 #endif
 #if defined(THREE_LEGS_2DOF)
-        SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/legged_robot/tripod_2dof.urdf");
+        SFERES_STRING(model_path,"/home/leni/git/sferes2/exp/novelty_neat/legged_robot/tripod_2dof.urdf");
 #elif defined(THREE_LEGS_3DOF)
-        SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/legged_robot/tripod_3dof.urdf");
+        SFERES_STRING(model_path,"/home/leni/git/sferes2/exp/novelty_neat/legged_robot/tripod_3dof.urdf");
 #elif defined(THREE_LEGS_4DOF)
-        SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/legged_robot/tripod_4dof.urdf");
+        SFERES_STRING(model_path,"/home/leni/git/sferes2/exp/novelty_neat/legged_robot/tripod_4dof.urdf");
 #elif defined(FOuR_LEGS_2DOF)
-        SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/legged_robot/quadpod_2dof.urdf");
+        SFERES_STRING(model_path,"/home/leni/git/sferes2/exp/novelty_neat/legged_robot/quadpod_2dof.urdf");
 #elif defined(FOUR_LEGS_3DOF)
-        SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/legged_robot/quadpod_3dof.urdf");
+        SFERES_STRING(model_path,"/home/leni/git/sferes2/exp/novelty_neat/legged_robot/quadpod_3dof.urdf");
 #elif defined(FOUR_LEGS_4DOF)
-        SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/legged_robot/quadpod_4dof.urdf");
+        SFERES_STRING(model_path,"/home/leni/git/sferes2/exp/novelty_neat/legged_robot/quadpod_4dof.urdf");
 #elif defined(SIX_LEGS_2DOF)
-        SFERES_STRING(model_path,"/git/sferes2/exp/novelty_neat/legged_robot/hexapod_2dof.urdf");
+        SFERES_STRING(model_path,"/home/leni/git/sferes2/exp/novelty_neat/legged_robot/hexapod_2dof.urdf");
 #elif defined(SIX_LEGS_4DOF)
-        SFERES_STRING(model_path,"/git/sferes2/expgit/novelty_neat/legged_robot/hexapod_4dof.urdf");
+        SFERES_STRING(model_path,"/home/leni/git/sferes2/exp/novelty_neat/legged_robot/hexapod_4dof.urdf");
 #else
-        SFERES_STRING(model_path,"/git/sferes2/expnovelty_neat/legged_robot/tripod_3dof.urdf");
+        SFERES_STRING(model_path,"/home/leni/git/sferes2/exp/novelty_neat/legged_robot/tripod_3dof.urdf");
 #endif
         static constexpr bool self_collision = true;
         static constexpr double time_step = 0.01;
@@ -126,7 +126,7 @@ struct Params{
 
         static constexpr size_t behav_dim = 2;
         SFERES_ARRAY(size_t, behav_shape, 256, 256);
-        SFERES_STRING(log_dir,"/data");
+        SFERES_STRING(log_dir,"/home/leni/sferes_log");
     };
     struct parameters {
         // maximum value of parameters
