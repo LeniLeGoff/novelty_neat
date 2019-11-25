@@ -24,7 +24,7 @@
 #ifndef RANK
 #include <sferes/ea/nsga2.hpp>
 #else
-#include <sferes/ea/rank_simple.hpp>
+#include "simple_ea.hpp"
 #endif
 
 #include <sferes/stat/pareto_front.hpp>
@@ -92,7 +92,7 @@ int main(int argc, char** argv){
 #ifndef RANK
     typedef sf::ea::Nsga2<phen_t, eval_t, stat_t, modifier_t, legged::Params> ea_t;
 #else
-    typedef sf::ea::RankSimple<phen_t, eval_t, stat_t, modifier_t, legged::Params> ea_t;
+    typedef sf::ea::SimpleEA<phen_t, eval_t, stat_t, modifier_t, legged::Params> ea_t;
 #endif
 
     ea_t ea;
