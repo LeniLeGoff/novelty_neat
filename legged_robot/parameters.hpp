@@ -140,7 +140,7 @@ struct Params{
 #if defined(LARGE_POP)
         static constexpr size_t size = 1200;
 #else
-        static constexpr size_t size = 400;
+        static constexpr size_t size = 8;
 #endif
 #if defined(LONG_RUN)
         static constexpr size_t nb_gen = 10001;
