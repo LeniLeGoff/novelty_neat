@@ -38,8 +38,8 @@
 #include "../phen_static_rnn.hpp"
 #include "stat_bd.hpp"
 #include "stat_neat.hpp"
+#include "stat_child_pop.hpp"
 
-#define EA_
 
 namespace sf = sferes;
 
@@ -82,7 +82,8 @@ int main(int argc, char** argv){
 #ifndef RANK
             sf::stat::ParetoFront<phen_t, legged::Params>,
 #endif
-            sf::stat::BD<phen_t,legged::Params>
+            sf::stat::BD<phen_t,legged::Params>,
+            sf::stat::ChildPop<phen_t,legged::Params>
 #ifdef NEAT
             ,sf::stat::Neat<phen_t,legged::Params>
 #endif
@@ -96,6 +97,8 @@ int main(int argc, char** argv){
 #endif
 
     ea_t ea;
+    if(argc >= 2)
+        ea.resume(argv[1]);
 
     //set logs directory
     typedef std::chrono::duration<double,std::milli> milli_sec;
@@ -122,5 +125,7 @@ int main(int argc, char** argv){
         boost::filesystem::create_directory(legged::Params::ea::log_dir() + folder);
     ea.set_res_dir(legged::Params::ea::log_dir() + folder);
     
+    // ea.load(argv[1]);
+
     sf::run_ea(argc,argv,ea);
 }
