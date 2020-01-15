@@ -96,6 +96,19 @@ def build(bld):
               defines = 'VISU',
               target = 'test_simu')
 
+
+  sferes.create_variants(bld,
+                      source = 'legged_robot/visualized_gen.cpp legged_robot/legged_robot.cpp',
+                      includes = '../../ ../../modules /usr/include/eigen3 /usr/include/ /usr/include/bullet',
+                      uselib = libs + ' DART DART_GRAPHIC',
+                      use = 'sferes2 nn2', 
+                      target = 'visu_gen',
+                      variants = [    
+                          'NOVELTY NEAT THREE_LEGS_2DOF LONG_EVAL EA_EVAL_ALL',
+                          'NOVELTY NEAT THREE_LEGS_3DOF LONG_EVAL',
+                          'NOVELTY NEAT THREE_LEGS_4DOF LONG_EVAL'
+                      ])
+
   sferes.create_variants(bld,
                       source = 'legged_robot/legged_robot_exp.cpp legged_robot/legged_robot.cpp',
                       includes = '../../ ../../modules /usr/include/eigen3 /usr/include/ /usr/include/bullet',
@@ -117,7 +130,7 @@ def build(bld):
                           # 'NOVELTY NEAT THREE_LEGS_3DOF LARGE_POP',
                           # 'NOVELTY NEAT THREE_LEGS_4DOF LARGE_POP',
 
-                          'NOVELTY NEAT THREE_LEGS_2DOF LONG_EVAL RANK',
+                          'NOVELTY NEAT THREE_LEGS_2DOF LONG_EVAL EA_EVAL_ALL',
                           'NOVELTY NEAT THREE_LEGS_3DOF LONG_EVAL',
                           'NOVELTY NEAT THREE_LEGS_4DOF LONG_EVAL',
 

@@ -66,7 +66,7 @@ int main(int argc, char** argv){
 #endif
 
 #ifndef VISU
-   typedef sf::eval::Parallel<legged::Params> eval_t;
+    typedef sf::eval::Parallel<legged::Params> eval_t;
 #else
     typedef sf::eval::Eval<legged::Params> eval_t;
 #endif
@@ -82,8 +82,8 @@ int main(int argc, char** argv){
 #ifndef RANK
             sf::stat::ParetoFront<phen_t, legged::Params>,
 #endif
-            sf::stat::BD<phen_t,legged::Params>,
-            sf::stat::ChildPop<phen_t,legged::Params>
+            sf::stat::BD<phen_t,legged::Params>
+            // sf::stat::ChildPop<phen_t,legged::Params>
 #ifdef NEAT
             ,sf::stat::Neat<phen_t,legged::Params>
 #endif
