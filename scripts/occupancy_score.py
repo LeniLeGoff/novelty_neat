@@ -24,6 +24,7 @@ for folder in os.listdir(sys.argv[1]) :
     
     nb_gen, scores = zip(*sorted(zip(nb_gen, scores)))
     
+
     with open(sys.argv[1] + "/" + folder + "/JSD" + sys.argv[2] + ".dat",'w') as jsd_file :
         for i in range(0,len(scores)) :
             jsd_file.write(str(nb_gen[i]) + " " + str(scores[i]) + '\n')

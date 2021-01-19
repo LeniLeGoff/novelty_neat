@@ -35,7 +35,7 @@ int main(int argc, char** argv){
 			std::cout << cmds.back() << std::endl;
 		}
 
-		sim._controller->setCommands(cmds);
+		//sim._controller->setCommands(cmds);
 	}
 
 	return 0;
