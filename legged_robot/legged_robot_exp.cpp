@@ -44,6 +44,22 @@
 namespace sf = sferes;
 
 int main(int argc, char** argv){
+
+    if(argc == 6){
+        legged::Params::dnn::m_rate_add_conn = std::stod(argv[1]);
+        legged::Params::dnn::m_rate_del_conn = std::stod(argv[2]);
+        legged::Params::dnn::m_rate_change_conn = std::stod(argv[3]);
+        legged::Params::dnn::m_rate_add_neuron = std::stod(argv[4]);
+        legged::Params::dnn::m_rate_del_neuron = std::stod(argv[5]);
+    }else if(argc == 7){
+        legged::Params::dnn::m_rate_add_conn = std::stod(argv[2]);
+        legged::Params::dnn::m_rate_del_conn = std::stod(argv[3]);
+        legged::Params::dnn::m_rate_change_conn = std::stod(argv[4]);
+        legged::Params::dnn::m_rate_add_neuron = std::stod(argv[5]);
+        legged::Params::dnn::m_rate_del_neuron = std::stod(argv[6]);
+    }
+
+
     typedef sf::phen::Parameters<sf::gen::EvoFloat<1, legged::Params>, sf::fit::FitDummy<>, legged::Params> weight_t;
     typedef sf::phen::Parameters<sf::gen::EvoFloat<1, legged::Params>, sf::fit::FitDummy<>, legged::Params> bias_t;
     typedef sf::phen::Parameters<sf::gen::EvoFloat<4, legged::Params>, sf::fit::FitDummy<>, legged::Params> node_label_t;
@@ -97,8 +113,9 @@ int main(int argc, char** argv){
 #endif
 
     ea_t ea;
-    if(argc >= 2)
+    if(argc == 2 || argc == 7)
         ea.resume(argv[1]);
+
 
     //set logs directory
     typedef std::chrono::duration<double,std::milli> milli_sec;

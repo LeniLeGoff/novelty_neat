@@ -95,29 +95,17 @@ struct Params{
         static constexpr size_t min_nb_conns	= 8;
         static constexpr size_t max_nb_conns	= 20000;
 
-        static constexpr float m_rate_add_conn	= 0.1f;
-        static constexpr float m_rate_del_conn	= 0.01f;
-        static constexpr float m_rate_change_conn = 0.1f;
-        static constexpr float m_rate_add_neuron  = 0.1f;
-        static constexpr float m_rate_del_neuron  = 0.01f;
+        static float m_rate_add_conn;
+        static float m_rate_del_conn;
+        static float m_rate_change_conn;
+        static float m_rate_add_neuron;
+        static float m_rate_del_neuron;
 
         static constexpr int io_param_evolving = true;
         static constexpr sf::gen::dnn::init_t init = sf::gen::dnn::random_topology;
     };
     struct static_nn{
-#if defined(NB_HIDDEN_0)
-        static constexpr size_t nb_hidden = 0;
-#elif defined(NB_HIDDEN_2)
-        static constexpr size_t nb_hidden = 2;
-#elif defined(NB_HIDDEN_4)
-        static constexpr size_t nb_hidden = 4;
-#elif defined(NB_HIDDEN_8)
-        static constexpr size_t nb_hidden = 8;
-#elif defined(NB_HIDDEN_16)
         static constexpr size_t nb_hidden = 16;
-#else
-        static constexpr size_t nb_hidden = 5;
-#endif
     };
     struct ea
     {
@@ -137,16 +125,8 @@ struct Params{
     struct pop
     {
         // size of a batch
-#if defined(LARGE_POP)
-        static constexpr size_t size = 1200;
-#else
-        static constexpr size_t size = 12;
-#endif
-#if defined(LONG_RUN)
-        static constexpr size_t nb_gen = 10001;
-#else
+        static constexpr size_t size = 400;
         static constexpr size_t nb_gen = 4001;
-#endif
         static constexpr float initial_aleat = 1.0f;
         static constexpr size_t dump_period = 50;
         static constexpr float keep_rate = 1.;
