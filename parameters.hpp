@@ -62,11 +62,11 @@ struct Params{
         static constexpr size_t min_nb_conns	= 8;
         static constexpr size_t max_nb_conns	= 250;
 
-        static constexpr float m_rate_add_conn	= 0.1f;
-        static constexpr float m_rate_del_conn	= 0.01f;
-        static constexpr float m_rate_change_conn = 0.1f;
-        static constexpr float m_rate_add_neuron  = 0.1f;
-        static constexpr float m_rate_del_neuron  = 0.01f;
+        static float m_rate_add_conn;
+        static float m_rate_del_conn;
+        static float m_rate_change_conn;
+        static float m_rate_add_neuron;
+        static float m_rate_del_neuron;
 
         static constexpr int io_param_evolving = true;
         static constexpr sf::gen::dnn::init_t init = sf::gen::dnn::ff;
@@ -198,5 +198,6 @@ struct Params{
         static constexpr float max_y3=1.;
     };
 };
+
 
 #endif //PARAMETERS_HPP

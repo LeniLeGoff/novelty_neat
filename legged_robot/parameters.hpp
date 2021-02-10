@@ -25,11 +25,8 @@ struct Params{
         static constexpr dart_dyn::Joint::ActuatorType actuator_type = dart_dyn::Joint::SERVO;
     };
     struct simu{
-#if defined(LONG_EVAL)
         static constexpr int nb_steps = 5000;
-#else
-        static constexpr int nb_steps = 10;
-#endif
+
 #if defined(THREE_LEGS_2DOF)
         SFERES_STRING(model_path,"/home/leni/git/novelty_neat/legged_robot/tripod_2dof.urdf");
 #elif defined(THREE_LEGS_3DOF)
