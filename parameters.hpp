@@ -2,6 +2,8 @@
 #define PARAMETERS_HPP
 
 #include <sferes/stc.hpp>
+#include <nn2/gen_dnn_ff.hpp>
+#include <sferes/gen/evo_float.hpp>
 
 namespace sf = sferes;
 
