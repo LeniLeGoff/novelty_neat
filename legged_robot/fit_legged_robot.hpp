@@ -6,6 +6,7 @@
 
 // #include "parameters.hpp"
 #include "legged_robot.hpp"
+#include "parameters.hpp"
 
 namespace sf = sferes;
 

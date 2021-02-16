@@ -5,19 +5,21 @@ import sys
 import sferes
 
 sys.path.insert(0,sys.path[0] + '/waf_tools')
-import dart, bullet
+import dart, bullet, multineat
 
 def options(opt):
-    opt.load('dart')
-    #opt.load('bullet')
+  opt.load('dart')
+  opt.load('multineat')
+  # opt.load('bullet')
 
 def configure(conf):
-    conf.load('dart')
-    #conf.load('bullet')
-    #conf.check_bullet()
-    conf.check_dart(required=True)
-
-
+  conf.load('dart')
+  conf.check_dart(required=True)
+  conf.load('multineat')
+  conf.check_multineat()
+  # conf.load('bullet')
+  # conf.check_bullet()
+    
 
 def build(bld):
   libs = 'EIGEN3 BOOST PTHREAD TBB'  
@@ -91,8 +93,22 @@ def build(bld):
                           'NOVELTY NEAT THREE_LEGS_3DOF',
                           'NOVELTY NEAT THREE_LEGS_4DOF',
 
-
                           'NOVELTY VISU',                          
                           
                           'VISU'
                           ])
+
+
+  bld.program(features = 'cxx',
+               source = 'legged_robot/neat_legged_robot.cpp legged_robot/legged_robot.cpp',
+               includes = '../../ ../../modules /usr/include /usr/include/eigen3 /usr/local/include',
+               uselib = libs + ' MULTINEAT DART DART_GRAPHIC',
+               use = 'sferes2',
+               target = 'neat_legged_robot')
+  sferes.create_variants(bld,
+               source = 'legged_robot/neat_legged_robot.cpp legged_robot/legged_robot.cpp',
+               includes = '../../ ../../modules /usr/include /usr/include/eigen3 /usr/local/include',
+               uselib = libs + ' MULTINEAT DART DART_GRAPHIC',
+               use = 'sferes2',
+               target = 'neat_legged_robot',
+               variants = ['VISU'])

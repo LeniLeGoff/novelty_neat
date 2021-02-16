@@ -6,8 +6,6 @@
     29/05/2018
 """ 
 
-import numpy as np
-
 import os
 from waflib.Configure import conf
 
