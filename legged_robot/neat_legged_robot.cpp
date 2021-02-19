@@ -2,6 +2,7 @@
 #include "legged_robot.hpp"
 #include <sferes/misc/rand.hpp>
 #include <boost/algorithm/string.hpp>
+#include <sstream>
 
 #ifdef VISU
 #define NO_PARALLEL
@@ -22,12 +23,14 @@ void init_params(NEAT::Parameters& params)
     params.MaxSpecies = 10;
     params.RouletteWheelSelection = false;
 
-    params.MutateRemLinkProb = 0.02;
+
     params.RecurrentProb = 0.5;
     params.RecurrentLoopProb = 0.5;
-    params.OverallMutationRate = 0.15;
-    params.MutateAddLinkProb = 0.1;
-    params.MutateAddNeuronProb = 0.1;
+    params.OverallMutationRate = 1;
+    params.MutateAddLinkProb = 0.5;
+    params.MutateAddNeuronProb = 0.5;
+    params.MutateRemSimpleNeuronProb = 0.01;
+    params.MutateRemLinkProb = 0.01;
     params.MutateWeightsProb = 0.1;
     params.MaxWeight = 8.0;
     params.WeightMutationMaxPower = 0.2;
@@ -40,18 +43,18 @@ void init_params(NEAT::Parameters& params)
 
     params.MutateNeuronActivationTypeProb = 0.03;
 
-    params.ActivationFunction_SignedSigmoid_Prob = 0.0;
+    params.ActivationFunction_SignedSigmoid_Prob = 1.0;
     params.ActivationFunction_UnsignedSigmoid_Prob = 0.0;
-    params.ActivationFunction_Tanh_Prob = 1.0;
+    params.ActivationFunction_Tanh_Prob = 0;
     params.ActivationFunction_TanhCubic_Prob = 0.0;
-    params.ActivationFunction_SignedStep_Prob = 1.0;
+    params.ActivationFunction_SignedStep_Prob = 0;
     params.ActivationFunction_UnsignedStep_Prob = 0.0;
-    params.ActivationFunction_SignedGauss_Prob = 1.0;
+    params.ActivationFunction_SignedGauss_Prob = 0;
     params.ActivationFunction_UnsignedGauss_Prob = 0.0;
     params.ActivationFunction_Abs_Prob = 0.0;
-    params.ActivationFunction_SignedSine_Prob = 1.0;
+    params.ActivationFunction_SignedSine_Prob = 0;
     params.ActivationFunction_UnsignedSine_Prob = 0.0;
-    params.ActivationFunction_Linear_Prob = 1.0;
+    params.ActivationFunction_Linear_Prob = 0;
 }
 
 std::vector<double> step_nn(NEAT::NeuralNetwork& nn, legged::Simulation& simu,const std::vector<double>& inputs){
@@ -120,10 +123,6 @@ bool get_inputs(legged::Simulation& simu, std::vector<double>& inputs){
         return false;
     return true;
 }
-
-
-     
-
 
 class Novelty {
 public:
@@ -269,7 +268,14 @@ void stat_neat(const std::string& res_dir, NEAT::Population& pop){
     }
     outf << std::endl;
     outf.close();
+}
 
+void stat_gen(const std::string& res_dir, NEAT::Population& pop, int gen){
+    for(size_t i = 0; i < legged::Params::pop::size; ++i){
+    	std::ostringstream of_name;
+		of_name << res_dir << "/gen_" << std::setfill('0') << std::setw(6) << gen << "_" << i;
+    	pop.AccessGenomeByIndex(i).Save(of_name.str().c_str());
+    }
 }
 
 int main(int argc, char** argv)
@@ -280,7 +286,7 @@ int main(int argc, char** argv)
     NEAT::Genome neat_genome(0, legged::Params::dnn::nb_inputs, 0, legged::Params::dnn::nb_outputs, false, NEAT::SIGNED_SIGMOID, NEAT::SIGNED_SIGMOID, 0, params, 0);
     NEAT::Population population(neat_genome, params, true, 1.0, std::random_device{}());
 
-    std::string res_dir;
+    static std::string res_dir;
     make_res_dir(res_dir,std::string(argv[0]));
 
     Novelty novelty;
@@ -291,6 +297,7 @@ int main(int argc, char** argv)
 #endif
 
     for(int g = 0; g < legged::Params::pop::nb_gen ; g++){
+
     	Novelty::pop_t pop_pos(legged::Params::pop::size); //Store the final positions of the robot.
 #ifndef NO_PARALLEL
     	sf_tbb::p_for(sf_tbb::range_t(0,legged::Params::pop::size),[&](sf_tbb::range_t& r){
@@ -354,10 +361,13 @@ int main(int argc, char** argv)
 		novelty_scores = novelty.apply(pop_pos);
 		for(int k = 0; k < legged::Params::pop::size; k++)
 	    	population.AccessGenomeByIndex(k).SetFitness(novelty_scores[k]);
+	    std::cout << "Writing logs in " << res_dir << std::endl;
 	    stat_bd(res_dir,pop_pos);
 	    stat_neat(res_dir,population);
-	   	
-	   	std::cout << "Generation - " << g << "finished" << std::endl;
+	   	if(g%legged::Params::pop::dump_period == 0)
+	   		stat_gen(res_dir,population,g);
+
+	   	std::cout << "Generation " << g << " finished" << std::endl;
 	    population.Epoch();
 
 	}	
