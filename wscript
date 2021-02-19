@@ -111,4 +111,7 @@ def build(bld):
                uselib = libs + ' MULTINEAT DART DART_GRAPHIC',
                use = 'sferes2',
                target = 'neat_legged_robot',
-               variants = ['VISU'])
+               variants = ['NO_PARALLEL','VISU'
+                            'THREE_LEGS_2DOF',
+                            'THREE_LEGS_3DOF',
+                            'THREE_LEGS_4DOF'])
