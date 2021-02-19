@@ -284,7 +284,8 @@ int main(int argc, char** argv)
     init_params(params);
 
     NEAT::Genome neat_genome(0, legged::Params::dnn::nb_inputs, 0, legged::Params::dnn::nb_outputs, false, NEAT::SIGNED_SIGMOID, NEAT::SIGNED_SIGMOID, 0, params, 0);
-    NEAT::Population population(neat_genome, params, true, 1.0, std::random_device{}());
+    std::random_device rd;
+    NEAT::Population population(neat_genome, params, true, 1.0, rd());
 
     static std::string res_dir;
     make_res_dir(res_dir,std::string(argv[0]));
